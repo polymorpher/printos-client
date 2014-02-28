@@ -24,9 +24,9 @@ import com.google.common.io.*;
 import java.util.concurrent.locks.*;
 import potatos.client.model.*;
 public class Client {
-	static String ROOT_DIR="/home/pi";
+//	static String ROOT_DIR="/home/pi";
 	//static String ROOT_DIR="/home/polymorpher/workspace-javaee/PotatOSCloudPrintClient";
-	static String configfile = ROOT_DIR+"/PotatOSconfig.ini";
+	static String configfile = "PrintOSconfig.ini";
 	static int ERROR_NONE=0;
 	static int ERROR_JSON=1;
 	static int ERROR_TAG=2;
