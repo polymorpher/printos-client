@@ -17,6 +17,8 @@ import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
 import javax.print.event.PrintJobAdapter;
 import javax.print.event.PrintJobEvent;
+import javax.print.event.PrintJobListener;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.*;
 import java.util.concurrent.locks.*;
@@ -421,6 +423,108 @@ public class Client {
 			printStackLock.unlock();
 		}
 	}
+//	void doPrint(Ticket rd, Integer id){
+//		if(rd==null)return;
+//		printStackLock.lock();
+//		try{
+//			if(printStack.contains(id)){
+//				return;
+//			}else{
+//				printStack.add(id);
+//			}
+//		}finally{
+//			printStackLock.unlock();
+//		}
+//		try{
+//			String s=processReceipt(rd,id);
+//			System.out.println(s);
+//			Files.write(s, new File(ROOT_DIR+"/piprt.tmp"),Charsets.US_ASCII);
+//			ProcessBuilder pb=new ProcessBuilder("lp","-o","raw",ROOT_DIR+"/piprt.tmp");
+//			Process p=pb.start();
+//		    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
+//		    String output="";
+//		    String line=reader.readLine(); 
+//		    while(line!=null) 
+//		    { 
+//			    System.out.println(line); 
+//			    output+=line+"\n";
+//			    line=reader.readLine(); 
+//		    }
+//			int ret=p.waitFor();
+//			int jobId=-1;
+//			if(output.contains("request id is")){
+//				String[] tempSplit=output.split(" ");
+//				String fullIdName=tempSplit[3];
+//				jobId=Integer.parseInt(fullIdName.substring(PRINTER_NAME.length()+1));
+//				//System.out.println("jobid="+jobId);
+////		    int ret=0;
+//				if(ret!=0){
+//					postStatus(id,"Printing device error. Needs on-site/remote investigation.",true,false,ERROR_OTHERS);
+//					printStackRemove(id);
+//				}else{
+//					Thread mon=new Thread(new JobStatusMonitor(id,jobId,PRINTER_NAME, this));
+//					mon.run();
+//				}
+//			}else{
+//				postStatus(id,"Unexpected lp output. Needs on-site/remote investigation.",true,false,ERROR_OTHERS);
+//				printStackRemove(id);
+//			}
+//		}catch(Exception e){
+//			if(e instanceof TagParsingException){
+//				postStatus(id,e.getClass().getName()+" "+e.getMessage(),false,false,ERROR_TAG);
+//			}else{
+//				postStatus(id,e.getClass().getName()+" "+e.getMessage(),true,false,ERROR_OTHERS);
+//			}
+//			writeLog(e.toString());
+//			for(StackTraceElement s:e.getStackTrace())
+//				writeLog(s.toString());
+//			printStackRemove(id);
+//		}
+//		
+//	}
+	class Listener implements PrintJobListener{
+		int id;
+		public Listener(int id){
+			this.id=id;
+		}
+		@Override
+		public void printDataTransferCompleted(PrintJobEvent arg0) {
+			
+		}
+
+		@Override
+		public void printJobCanceled(PrintJobEvent arg0) {
+			postStatus(id,"PrintJob cancelled by printer! "+arg0.toString(),false,false,ERROR_OTHERS);
+			writeLog("PrintJob ["+id+"] cancelled by printer. msg:"+arg0.toString());
+			printStackRemove(id);
+		}
+
+		@Override
+		public void printJobCompleted(PrintJobEvent arg0) {
+	    	postStatus(id,"Completed",false,true,ERROR_NONE);
+	    	printStackRemove(id);
+		}
+
+		@Override
+		public void printJobFailed(PrintJobEvent arg0) {
+			postStatus(id,"PrintJob failed! "+arg0.toString() ,false,false,ERROR_OTHERS);
+			writeLog("PrintJob ["+id+"] failed "+arg0.toString());
+			printStackRemove(id);
+		}
+
+		@Override
+		public void printJobNoMoreEvents(PrintJobEvent arg0) {
+	    	postStatus(id,"Completed",false,true,ERROR_NONE);
+	    	printStackRemove(id);
+		}
+
+		@Override
+		public void printJobRequiresAttention(PrintJobEvent arg0) {
+			postStatus(id,"PrintJob error! "+arg0.toString() ,false,false,ERROR_OTHERS);
+			writeLog("PrintJob ["+id+"] error "+arg0.toString());
+			printStackRemove(id);
+		}
+	}
 	void doPrint(Ticket rd, Integer id){
 		if(rd==null)return;
 		printStackLock.lock();
@@ -435,38 +539,18 @@ public class Client {
 		}
 		try{
 			String s=processReceipt(rd,id);
+			
+			DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+//			Files.write(s, new File(ROOT_DIR+"/piprt.tmp"),Charsets.US_ASCII);
+//			FileInputStream fis = new FileInputStream("piprt.tmp");
+			DocPrintJob printJob = serviceList.get(0).createPrintJob();
+			printJob.addPrintJobListener(new Listener(id));
+			Doc document = new SimpleDoc(new ByteArrayInputStream(s.getBytes(Charsets.US_ASCII)), flavor, null);
+			
+			printJob.print(document, null);
+			
+			
 			System.out.println(s);
-			Files.write(s, new File(ROOT_DIR+"/piprt.tmp"),Charsets.US_ASCII);
-			ProcessBuilder pb=new ProcessBuilder("lp","-o","raw",ROOT_DIR+"/piprt.tmp");
-			Process p=pb.start();
-		    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-		    String output="";
-		    String line=reader.readLine(); 
-		    while(line!=null) 
-		    { 
-			    System.out.println(line); 
-			    output+=line+"\n";
-			    line=reader.readLine(); 
-		    }
-			int ret=p.waitFor();
-			int jobId=-1;
-			if(output.contains("request id is")){
-				String[] tempSplit=output.split(" ");
-				String fullIdName=tempSplit[3];
-				jobId=Integer.parseInt(fullIdName.substring(PRINTER_NAME.length()+1));
-				//System.out.println("jobid="+jobId);
-//		    int ret=0;
-				if(ret!=0){
-					postStatus(id,"Printing device error. Needs on-site/remote investigation.",true,false,ERROR_OTHERS);
-					printStackRemove(id);
-				}else{
-					Thread mon=new Thread(new JobStatusMonitor(id,jobId,PRINTER_NAME, this));
-					mon.run();
-				}
-			}else{
-				postStatus(id,"Unexpected lp output. Needs on-site/remote investigation.",true,false,ERROR_OTHERS);
-				printStackRemove(id);
-			}
 		}catch(Exception e){
 			if(e instanceof TagParsingException){
 				postStatus(id,e.getClass().getName()+" "+e.getMessage(),false,false,ERROR_TAG);
