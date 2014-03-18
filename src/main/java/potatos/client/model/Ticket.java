@@ -17,6 +17,7 @@ public class Ticket {
 	Long creationTime;
 	Integer lineWidth;
 	String barcode;
+	Boolean hideBarcode;
 	public String getMode() {
 		return mode;
 	}
@@ -112,6 +113,12 @@ public class Ticket {
 	}
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
+	}
+	public Boolean getHideBarcode() {
+		return hideBarcode;
+	}
+	public void setHideBarcode(Boolean hideBarcode) {
+		this.hideBarcode = hideBarcode;
 	}
 	
 }

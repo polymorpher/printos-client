@@ -179,6 +179,7 @@ public class Client {
 			r += "Items:\n";
 			if(rd.getTicketItems()!=null){
 				for(TicketItem ti:rd.getTicketItems()){
+					if(ti==null)continue;
 					r+="------------------\n";
 					r+=String.format("<h3>#%d %s%s</h3><right>%d * $%.2f</right>",
 							ti.getId(),
@@ -186,8 +187,10 @@ public class Client {
 							ti.getPortion()==null?"":"."+ti.getPortion(),
 							ti.getQuantity(),
 							ti.getPrice());
-					for(TicketItemProperty tip:ti.getProperties()){
-						r+=String.format("-- %s<right>%d * $%.2f</right>", tip.getName(),tip.getQuantity(),tip.getPrice());
+					if(ti.getProperties()!=null){
+						for(TicketItemProperty tip:ti.getProperties()){
+							r+=String.format("-- %s<right>%d * $%.2f</right>", tip.getName(),tip.getQuantity(),tip.getPrice());
+						}
 					}
 				}
 			}
@@ -198,13 +201,13 @@ public class Client {
 			if(rd.getDiscount()!=null&&rd.getDiscount()>0)r+=String.format("Discount: <right>%f</right>\n", rd.getDiscount());
 			r+=String.format("Total: <right>%f</right>\n",rd.getTotal());
 			
-			if(rd.getType()=="online"){
+			if(rd.getType().equals("online")){
 				r += "Name: " + rd.getName() + "\n";
 				r += "Phone: " + rd.getPhone() + "\n";
 				r += "Email: " + rd.getEmail() + "\n";
 				r += "Comments: <h3>" + rd.getComments() + "</h3>\n";
 			}
-			if(rd.getBarcode()!=null){
+			if(rd.getBarcode()!=null && rd.getHideBarcode()!=true){
 				r += "Barcode: "+rd.getBarcode()+"\n<barcode>"+rd.getBarcode()+"</barcode>\n";
 			}
 			r=parser.convert(r);
@@ -507,7 +510,7 @@ public class Client {
 
 		@Override
 		public void printJobFailed(PrintJobEvent arg0) {
-			postStatus(id,"PrintJob failed! "+arg0.toString() ,false,false,ERROR_OTHERS);
+			postStatus(id,"PrintJob failed! "+arg0.toString() ,true,false,ERROR_OTHERS);
 			writeLog("PrintJob ["+id+"] failed "+arg0.toString());
 			printStackRemove(id);
 		}
@@ -520,7 +523,7 @@ public class Client {
 
 		@Override
 		public void printJobRequiresAttention(PrintJobEvent arg0) {
-			postStatus(id,"PrintJob error! "+arg0.toString() ,false,false,ERROR_OTHERS);
+			postStatus(id,"PrintJob error! "+arg0.toString() ,true,false,ERROR_OTHERS);
 			writeLog("PrintJob ["+id+"] error "+arg0.toString());
 			printStackRemove(id);
 		}
