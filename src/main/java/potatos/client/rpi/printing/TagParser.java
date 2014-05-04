@@ -1,5 +1,7 @@
 package potatos.client.rpi.printing;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Arrays;
@@ -9,8 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
+//import com.google.common.base.Charsets;
+//import com.google.common.io.Files;
 public class TagParser {
 	static String SMALL_TEXT="h1"; // 9x17
 	static String REGULAR_TEXT="h2"; // 12x24
@@ -317,7 +319,19 @@ public class TagParser {
 	}
 	public void saveToFile(String str, String file) throws IOException{
 		//Files.write(str.getBytes(Charsets.US_ASCII), new File(file));
-		Files.write(str, new File(file),Charsets.US_ASCII);
+		File f = new File(file);
+		 
+		// if file doesnt exists, then create it
+		if (!f.exists()) {
+			f.createNewFile();
+		}
+
+		FileWriter fw = new FileWriter(f.getAbsoluteFile());
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(str);
+		bw.close();
+		
+//		Files.write(str, new File(file),Charsets.US_ASCII);
 	}
 	public String getCurrentTag(String s, int pos){
 		int to=-1;

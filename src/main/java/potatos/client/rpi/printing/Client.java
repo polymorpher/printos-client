@@ -9,6 +9,8 @@ import java.util.*;
 import com.google.gson.*;
 import java.text.*;
 import java.net.URLDecoder;
+import java.nio.charset.Charset;
+
 import javax.print.Doc;
 import javax.print.DocFlavor;
 import javax.print.DocPrintJob;
@@ -19,8 +21,8 @@ import javax.print.event.PrintJobAdapter;
 import javax.print.event.PrintJobEvent;
 import javax.print.event.PrintJobListener;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.*;
+//import com.google.common.base.Charsets;
+//import com.google.common.io.*;
 import java.util.concurrent.locks.*;
 import potatos.client.model.*;
 public class Client {
@@ -215,10 +217,10 @@ public class Client {
 		}else if(rd.getMode().equals("tagged")){
 			r += parser.convert(rd.getComments());
 		}
-		r += "\n\nPowered By PrintOS http://printos.io/\n";
-		r += "Cloud printing & receipt ad solution\n\n";
-		r += "Designed By PotatOS http://potatos.cc/\n";
-		r += "A leading cloud restaurant system provider";
+//		r += "\n\nPowered By PrintOS http://printos.io/\n";
+//		r += "Cloud printing & receipt ad solution\n\n";
+//		r += "Designed By PotatOS http://potatos.cc/\n";
+//		r += "A leading cloud restaurant system provider";
 		r +="\n\n\n\n\n\n";
 		r += cutCommand;
 		//System.out.println(r);
@@ -236,7 +238,7 @@ public class Client {
 			poster.add("error_code",Integer.toString(errorCode));
 			URLConnection statusConnection=new URL(config.get("statusURL")).openConnection();
 			poster.post(statusConnection);
-			BufferedReader br=new BufferedReader(new InputStreamReader(statusConnection.getInputStream(),Charsets.UTF_8));
+			BufferedReader br=new BufferedReader(new InputStreamReader(statusConnection.getInputStream(),Charset.forName("UTF8")));
 			String ret=readAll(br);
 			System.out.println("ret="+ret);
 			Response response=gson.fromJson(ret, Response.class);
@@ -462,7 +464,7 @@ public class Client {
 //				//System.out.println("jobid="+jobId);
 ////		    int ret=0;
 //				if(ret!=0){
-//					postStatus(id,"Printing device error. Needs on-site/remote investigation.",true,false,ERROR_OTHERS);
+//					postStatus(id,"Printing device error. Needjars on-site/remote investigation.",true,false,ERROR_OTHERS);
 //					printStackRemove(id);
 //				}else{
 //					Thread mon=new Thread(new JobStatusMonitor(id,jobId,PRINTER_NAME, this));
@@ -548,7 +550,7 @@ public class Client {
 //			FileInputStream fis = new FileInputStream("piprt.tmp");
 			DocPrintJob printJob = serviceList.get(0).createPrintJob();
 			printJob.addPrintJobListener(new Listener(id));
-			Doc document = new SimpleDoc(new ByteArrayInputStream(s.getBytes(Charsets.US_ASCII)), flavor, null);
+			Doc document = new SimpleDoc(new ByteArrayInputStream(s.getBytes(Charset.forName("ASCII"))), flavor, null);
 			
 			printJob.print(document, null);
 			
@@ -606,9 +608,10 @@ public class Client {
 				poster.add("version", "2");
 				poster.post(connection);
 				
-				BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream(),Charsets.UTF_8));
+				BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream(),Charset.forName("UTF8")));
 				
 				String ret=readAll(br);
+				System.out.println(ret);
 				Response response=gson.fromJson(ret, Response.class);
 				if(response.version>Client.version){
 					//this.beginUpgrade();

@@ -8,8 +8,8 @@ import potatos.client.model.TicketItem;
 import potatos.client.model.TicketItemProperty;
 
 import com.google.gson.*;
-import com.google.common.base.Charsets;
-import com.google.common.io.*;
+//import com.google.common.base.Charsets;
+//import com.google.common.io.*;
 public class TicketTest {
 	static String processReceipt(Ticket rd, Integer id) throws Exception {
 		String r = "";
@@ -58,21 +58,21 @@ public class TicketTest {
 		//System.out.println(r);
 		return r;
 	}
-	public static void main(String[] args) {
-		Gson gson = new Gson();
-		String str=null;
-		try {
-			str = Files.toString(new File("jsontest"), Charsets.US_ASCII);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Ticket rd = gson.fromJson(str, Ticket.class);
-		try {
-			System.out.println(processReceipt(rd,1));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		Gson gson = new Gson();
+//		String str=null;
+//		try {
+//			str = Files.toString(new File("jsontest"), Charsets.US_ASCII);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Ticket rd = gson.fromJson(str, Ticket.class);
+//		try {
+//			System.out.println(processReceipt(rd,1));
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }
