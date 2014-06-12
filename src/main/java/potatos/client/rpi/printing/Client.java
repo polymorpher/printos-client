@@ -20,7 +20,7 @@ import javax.print.SimpleDoc;
 import javax.print.event.PrintJobAdapter;
 import javax.print.event.PrintJobEvent;
 import javax.print.event.PrintJobListener;
-
+import potatos.client.util.*;
 //import com.google.common.base.Charsets;
 //import com.google.common.io.*;
 import java.util.concurrent.locks.*;
@@ -507,6 +507,12 @@ public class Client {
 		@Override
 		public void printJobCompleted(PrintJobEvent arg0) {
 	    	postStatus(id,"Completed",false,true,ERROR_NONE);
+	    	try{
+	    		SoundPlayer.playSound(this.getClass().getResource("/bleep.wav"));
+	    	}catch(Exception e){
+	    		writeLog("Unable to play sound: "+e.getMessage());
+	    		e.printStackTrace();
+	    	}
 	    	printStackRemove(id);
 		}
 
@@ -520,6 +526,12 @@ public class Client {
 		@Override
 		public void printJobNoMoreEvents(PrintJobEvent arg0) {
 	    	postStatus(id,"Completed",false,true,ERROR_NONE);
+	    	try{
+	    		SoundPlayer.playSound(this.getClass().getResource("/bleep.wav"));
+	    	}catch(Exception e){
+	    		writeLog("Unable to play sound: "+e.getMessage());
+	    		e.printStackTrace();
+	    	}
 	    	printStackRemove(id);
 		}
 

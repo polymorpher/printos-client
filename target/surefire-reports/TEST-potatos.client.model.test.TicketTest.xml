@@ -30,9 +30,9 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="3.11.0-20-generic"/>
+    <property name="os.version" value="3.13.0-27-generic"/>
     <property name="user.home" value="/home/polymorpher"/>
-    <property name="user.timezone" value="America/Montreal"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="1.7"/>

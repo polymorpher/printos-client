@@ -73,6 +73,7 @@ public class TagParser {
 		
 	}
 	public boolean validate(String s) throws InvalidTagException, BadFormatException{
+		if(s==null) throw new BadFormatException("Empty input. Please consult with API documentation and verify that field names match with the requirement.");
 		int from=0,to=s.length();
 		ArrayDeque<String> currentTags=new ArrayDeque<String>();
 		boolean bold=false;
