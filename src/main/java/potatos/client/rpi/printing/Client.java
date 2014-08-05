@@ -40,6 +40,7 @@ public class Client {
 	DateFormat formatter;
 	FileWriter fstream;
 	BufferedWriter log;
+    String bleepSoundPath;
 	public Set<Integer> printStack=new HashSet<Integer>();
 	public ReentrantLock printStackLock=new ReentrantLock();
 	HashMap<String, String> config=new HashMap<String, String>();
@@ -123,7 +124,12 @@ public class Client {
 		
 		if (config.containsKey("sleep")) {
 			sleeptime = Integer.parseInt(config.get("sleep")) * 1000;
-		}	 
+		}
+        if(config.containsKey("sound")){
+            bleepSoundPath=config.get("sound");
+        }else{
+            bleepSoundPath="bell.wav";
+        }
 		if (config.containsKey("printer")) {
 			selectPrinter(config.get("printer"));
 		} else {
@@ -236,6 +242,8 @@ public class Client {
 			poster.add("reset",reset?"1":"0");
 			poster.add("printed",printed?"1":"0");
 			poster.add("error_code",Integer.toString(errorCode));
+            writeLog("Posting Status: id="+id.toString()+" reset="+ (reset?"1":"0") + " printed="+(printed?"1":"0")
+                + " status="+(errorMessage==null||errorMessage.isEmpty()?" ":errorMessage) + " error_code="+Integer.toString(errorCode));
 			URLConnection statusConnection=new URL(config.get("statusURL")).openConnection();
 			poster.post(statusConnection);
 			BufferedReader br=new BufferedReader(new InputStreamReader(statusConnection.getInputStream(),Charset.forName("UTF8")));
@@ -507,8 +515,9 @@ public class Client {
 		@Override
 		public void printJobCompleted(PrintJobEvent arg0) {
 	    	postStatus(id,"Completed",false,true,ERROR_NONE);
+            writeLog("PrintJob Completed: "+id);
 	    	try{
-	    		SoundPlayer.playSound(this.getClass().getResource("/bleep.wav"));
+	    		SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
 	    	}catch(Exception e){
 	    		writeLog("Unable to play sound: "+e.getMessage());
 	    		e.printStackTrace();
@@ -525,6 +534,7 @@ public class Client {
 
 		@Override
 		public void printJobNoMoreEvents(PrintJobEvent arg0) {
+            writeLog("PrintJob Completed: "+id);
 	    	postStatus(id,"Completed",false,true,ERROR_NONE);
 	    	try{
 	    		SoundPlayer.playSound(this.getClass().getResource("/bleep.wav"));
@@ -574,7 +584,7 @@ public class Client {
 			}else{
 				postStatus(id,e.getClass().getName()+" "+e.getMessage(),true,false,ERROR_OTHERS);
 			}
-			writeLog(e.toString());
+			writeLog("Print failure (id="+id.toString()+") due to the following exception:"+e.toString());
 			for(StackTraceElement s:e.getStackTrace())
 				writeLog(s.toString());
 			printStackRemove(id);
