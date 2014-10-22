@@ -53,23 +53,24 @@ public class Client {
     static int MAX_ATTEMPTS = 5;
 
     String bleepSoundPath;
-//    public Set<UUID> printStack = new HashSet<UUID>();
+    //    public Set<UUID> printStack = new HashSet<UUID>();
 //    public ReentrantLock printStackLock = new ReentrantLock();
-    Map<UUID,String> printJobs=new ConcurrentHashMap<UUID,String>();
+    Map<UUID, String> printJobs = new ConcurrentHashMap<UUID, String>();
     Map<String, String> config = new HashMap<String, String>();
     AbstractTagParser parser;
     int sleeptime = 1000;
-//    Gson gson = Converters.registerDateTime(new GsonBuilder()).create();
-    Gson gson=new Gson();
+    //    Gson gson = Converters.registerDateTime(new GsonBuilder()).create();
+    Gson gson = new Gson();
     String PRINTER_NAME = "";
     String CUT_EPSON = "" + (char) 29 + 'V' + (char) 0;
     String CUT_LEGACY = "" + (char) 27 + 'm';
     String cutCommand = "";
-
+    int defaultLineWidth = 560;
     List<Cookie> cookieMonster = new ArrayList<Cookie>();
     DateTime cookieMonsterLastUpdate = DateTime.now();
     LoginInfo loginInfo;
     Long lastLookupTime = null;
+    AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
 
     public static void main(String[] args) {
         Client c = new Client();
@@ -125,18 +126,18 @@ public class Client {
 
 //        Gson gson = new Gson();
         String body = gson.toJson(loginInfo);
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+
         Future<Response> fres = asyncHttpClient.preparePost(config.get("login_api")).setBody(body)
-                .setFollowRedirects(false).setHeader("Content-Type","application/json").execute();
+                .setFollowRedirects(false).setHeader("Content-Type", "application/json").execute();
         Response res = fres.get();
         int rcode = res.getStatusCode();
         List<Cookie> cookies = res.getCookies();
 
-        if(cookies.size()>0) {
-            logger.info("cookieMonster:"+cookieMonster.toString());
+        if (cookies.size() > 0) {
+            logger.info("cookieMonster:" + cookieMonster.toString());
             cookieMonster = cookies;
             cookieMonsterLastUpdate = DateTime.now();
-            logger.info("Updateing cookieMonster to:"+cookieMonster.toString());
+            logger.info("Updateing cookieMonster to:" + cookieMonster.toString());
         }
         if (rcode != 200) {
             logger.error("Error on login: [" + String.valueOf(rcode) + "] " + res.getResponseBody());
@@ -150,7 +151,6 @@ public class Client {
         if (numAttempts == 0) {
             return;
         }
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         String body = gson.toJson(u);
         AsyncHttpClient.BoundRequestBuilder builder = asyncHttpClient.preparePost(config.get("update_api"))
                 .setBody(body).setFollowRedirects(true).setHeader("Content-Type", "application/json");
@@ -183,14 +183,13 @@ public class Client {
     private PrintJobQueue getJobs(int numAttempts)
             throws Exception {
         if (numAttempts == 0) return null;
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         AsyncHttpClient.BoundRequestBuilder builder;
         Future<Response> fres = null;
         if (lastLookupTime == null) {
             builder = asyncHttpClient.prepareGet(config.get("lookup_api")).setFollowRedirects(true);
         } else {
             builder = asyncHttpClient.prepareGet(config.get("lookupafter_api") +
-                        "/" + new DateTime(lastLookupTime).toString())
+                    "/" + new DateTime(lastLookupTime).toString())
                     .setFollowRedirects(true);
         }
         for (Cookie cookie : cookieMonster) {
@@ -204,7 +203,7 @@ public class Client {
             loginToServer();
             return getJobs(numAttempts - 1);
         } else if (rcode == 200) {
-            logger.info("Parsing response:"+res.getResponseBody());
+            logger.info("Parsing response:" + res.getResponseBody());
             return gson.fromJson(res.getResponseBody(), PrintJobQueue.class);
         } else {
             logger.error("Error on lookup [" + rcode + "] " + res.getResponseBody());
@@ -272,7 +271,7 @@ public class Client {
         if (config.containsKey("sound")) {
             bleepSoundPath = config.get("sound");
         } else {
-            bleepSoundPath = "bell.wav";
+            bleepSoundPath = "/bell.wav";
         }
         if (config.containsKey("printer")) {
             selectPrinter(config.get("printer"));
@@ -328,7 +327,7 @@ public class Client {
 
     String processPrintData(String data) throws Exception {
         String r = "";
-        r += parser.convert(data);
+        r += parser.convert(data, defaultLineWidth);
         r += "\n\n\n\n\n\n";
         r += cutCommand;
         return r;
@@ -372,10 +371,11 @@ public class Client {
             } else {
                 cutCommand = CUT_EPSON;
             }
-            if(PRINTER_NAME.contains("Dascom")&&PRINTER_NAME.contains("2610")){
-                parser=new ESCPTagParser();
-            }else{
-                parser=new ESCPOSTagParser();
+            if (PRINTER_NAME.contains("Dascom") && PRINTER_NAME.contains("2610")) {
+                parser = new ESCPTagParser();
+                defaultLineWidth = 800;
+            } else {
+                parser = new ESCPOSTagParser();
             }
             System.out.println("We FOUND \"" + name + "\" !!!!!!!!!!!");
         }
@@ -420,9 +420,11 @@ public class Client {
 
     class Listener implements PrintJobListener {
         UUID id;
+        Boolean eventAlreadyFired;
 
         public Listener(UUID id) {
             this.id = id;
+            eventAlreadyFired = false;
         }
 
         @Override
@@ -432,19 +434,29 @@ public class Client {
 
         @Override
         public void printJobCanceled(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
             JobUpdate u = new JobUpdate(id, "PrintJob cancelled by printer! " + arg0.toString(),
                     ERROR_OTHERS, true, false);
             updatePrintJob(u);
             logger.info("PrintJob [" + id + "] cancelled by printer. msg:" + arg0.toString());
 //            printJobs.remove(id);
+
         }
 
         @Override
         public void printJobCompleted(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
             JobUpdate u = new JobUpdate(id, "Completed",
                     ERROR_NONE, false, true);
-            updatePrintJob(u);
+
             logger.info("PrintJob Completed: " + id.toString());
+            updatePrintJob(u);
             try {
                 SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
             } catch (Exception e) {
@@ -452,20 +464,31 @@ public class Client {
                 e.printStackTrace();
             }
             printJobs.remove(id);
+
         }
 
         @Override
         public void printJobFailed(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
             JobUpdate u = new JobUpdate(id, "PrintJob failed! " + arg0.toString(), ERROR_OTHERS, true, false);
             logger.error("PrintJob [" + id + "] failed " + arg0.toString());
 //            printJobs.remove(id);
+
         }
 
         @Override
         public void printJobNoMoreEvents(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
             JobUpdate u = new JobUpdate(id, "Completed", ERROR_NONE, false, true);
+
+            logger.info("PrintJob Completed (No more event): " + id.toString());
             updatePrintJob(u);
-            logger.info("PrintJob Completed: " + id.toString());
             try {
                 SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
             } catch (Exception e) {
@@ -477,6 +500,10 @@ public class Client {
 
         @Override
         public void printJobRequiresAttention(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
             JobUpdate u = new JobUpdate(id, "PrintJob error! " + arg0.toString(), ERROR_OTHERS, true, false);
             logger.info("PrintJob [" + id + "] error " + arg0.toString());
 //            printJobs.remove(id);
@@ -484,7 +511,7 @@ public class Client {
     }
 
     void doPrint(String data, UUID id) {
-        logger.info("Printing id="+id.toString());
+        logger.info("Printing id=" + id.toString());
         try {
             String s = processPrintData(data);
             DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
@@ -512,14 +539,14 @@ public class Client {
                 if (queue != null) {
                     lastLookupTime = queue.timestamp;
                     for (PrintJob job : queue.jobs) {
-                        if(!printJobs.containsKey(job.id)){
-                            printJobs.put(job.id,job.data);
+                        if (!printJobs.containsKey(job.id)) {
+                            printJobs.put(job.id, job.data);
                         }
 //                        doPrint(job.data, job.id);
                     }
                 }
-                for(Map.Entry<UUID,String> kv:printJobs.entrySet()){
-                    doPrint(kv.getValue(),kv.getKey());
+                for (Map.Entry<UUID, String> kv : printJobs.entrySet()) {
+                    doPrint(kv.getValue(), kv.getKey());
                 }
                 Thread.sleep(sleeptime);
             } catch (Exception e) {

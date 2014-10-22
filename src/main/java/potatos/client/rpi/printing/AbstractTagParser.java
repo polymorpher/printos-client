@@ -5,4 +5,5 @@ package potatos.client.rpi.printing;
  */
 public interface AbstractTagParser {
     public String convert(String str) throws Exception;
+    public String convert(String s, Integer width) throws Exception;
 }

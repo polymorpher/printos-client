@@ -260,7 +260,7 @@ public class ESCPOSTagParser implements AbstractTagParser{
 		}
 		return lines;
 	}
-	public String convert(String s)throws Exception{
+	public String convert(String s) throws Exception{
 		return convert(s,null);
 	}
 	public String convert(String s, Integer width) throws Exception{
