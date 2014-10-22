@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PrintOS.iml" filepath="$PROJECT_DIR$/PrintOS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/printos.iml" filepath="$PROJECT_DIR$/printos.iml" />
     </modules>
   </component>
 </project>

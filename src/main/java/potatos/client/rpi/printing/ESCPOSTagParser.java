@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 //import com.google.common.base.Charsets;
 //import com.google.common.io.Files;
-public class TagParser {
+public class ESCPOSTagParser implements AbstractTagParser{
 	static String SMALL_TEXT="h1"; // 9x17
 	static String REGULAR_TEXT="h2"; // 12x24
 	static String LARGE_TEXT="h3";  // 18x34
@@ -369,7 +369,7 @@ public class TagParser {
 		return s.substring(from, pos+1);
 	}
 	public static void main(String[] args){
-		TagParser tp=new TagParser();
+		ESCPOSTagParser tp=new ESCPOSTagParser();
 		//String data="<right><b>Add beef to potato strips. I will come soon.</b></right>abcd<right>Not bold Add beef to potato strips. I will come soon.</right>\n<h3>this is another test</h3>\n<right><h4>testh4</h4>\n<h5>superbig</h5>\n <h6>gigantic</h6></right>";
 		//String data="test<right>test from ali at e29</right>dsadasfsafafgsagsagsa<barcode>123dsadsadsadasdadsadsadsadsadsdsasdsadasdasdsadsadsadas45678</barcode>";
 		String data="61437208990nn<barcode>123321</barcode>";

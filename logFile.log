@@ -1,0 +1,2199 @@
+2014-09-18 01:11:15,104 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 01:11:15,107 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 01:11:15,274 ERROR [main] Client: java.lang.NullPointerException
+	at java.net.URI$Parser.parse(URI.java:3023)
+	at java.net.URI.<init>(URI.java:595)
+	at java.net.URI.create(URI.java:857)
+	at com.ning.http.client.RequestBuilderBase.setUrl(RequestBuilderBase.java:374)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.setUrl(AsyncHttpClient.java:340)
+	at com.ning.http.client.AsyncHttpClient.requestBuilder(AsyncHttpClient.java:608)
+	at com.ning.http.client.AsyncHttpClient.preparePost(AsyncHttpClient.java:474)
+	at potatos.client.rpi.printing.Client.loginToServer(Client.java:125)
+	at potatos.client.rpi.printing.Client.<init>(Client.java:269)
+	at potatos.client.rpi.printing.Client.main(Client.java:71)
+
+2014-09-18 01:11:15,485 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:15,601 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:15,727 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:15,834 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:15,944 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:21,062 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:21,177 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:21,291 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:21,409 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:21,526 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:26,643 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:26,755 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:26,877 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:26,989 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:11:27,108 ERROR [main] Client: Error on lookup [303] 
+2014-09-18 01:19:17,914 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 01:19:17,917 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 01:19:18,418 ERROR [main] Client: Error on login: [404] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Action not found</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Action not found</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destiantion/login'
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:19:18,435 ERROR [main] Client: java.lang.NullPointerException
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:184)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:203)
+	at potatos.client.rpi.printing.Client.start(Client.java:503)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+
+2014-09-18 01:19:23,442 ERROR [main] Client: java.lang.NullPointerException
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:184)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:203)
+	at potatos.client.rpi.printing.Client.start(Client.java:503)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+
+2014-09-18 01:19:28,448 ERROR [main] Client: java.lang.NullPointerException
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:184)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:203)
+	at potatos.client.rpi.printing.Client.start(Client.java:503)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+
+2014-09-18 01:19:33,453 ERROR [main] Client: java.lang.NullPointerException
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:184)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:203)
+	at potatos.client.rpi.printing.Client.start(Client.java:503)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+
+2014-09-18 01:21:31,277 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 01:21:31,282 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 01:21:31,673 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:21:32,267 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:21:32,390 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:21:32,561 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:21:32,690 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:21:32,861 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:21:32,983 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:21:33,145 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:21:33,260 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:21:33,438 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:21:33,551 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:21:38,720 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:21:38,840 ERROR [main] Client: Error on login: [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'POST /rest/destination/login' [Expecting text/json or application/json body]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 01:56:50,876 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 01:56:50,879 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 01:56:55,128 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:56:55,374 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:56:55,550 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:56:55,831 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:56:56,014 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:56:56,384 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:56:56,559 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:56:56,813 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:56:57,008 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:56:57,323 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:56:57,485 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:02,653 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:02,795 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:03,016 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:03,141 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:03,312 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:03,441 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:03,611 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:03,737 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:03,914 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:04,069 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:09,255 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:09,372 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:09,547 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:09,678 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:09,850 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:09,967 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:10,161 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:10,323 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 01:57:10,495 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 01:57:10,632 ERROR [main] Client: Error on login: [400] {"message":"Invalid login"}
+2014-09-18 02:01:09,712 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:01:09,715 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:01:10,803 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:11,178 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:11,535 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:12,555 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:13,550 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:19,217 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:19,589 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:19,958 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:20,315 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:20,683 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:26,026 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:26,391 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:26,739 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:27,082 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:01:27,461 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:19,148 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:03:19,151 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:03:19,781 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:19,965 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:20,159 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:20,331 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:20,507 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:20,672 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:20,852 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:21,013 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:21,195 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:21,403 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:21,583 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:26,751 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:26,933 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:27,104 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:27,306 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:27,474 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:27,649 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:27,819 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:28,025 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:03:28,204 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:03:28,374 INFO  [main] Client: Login successful. cookies=[]
+2014-09-18 02:06:44,511 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:06:44,514 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:06:44,956 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:45,136 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:45,322 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:45,494 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:45,681 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:45,858 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:46,077 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:46,239 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:46,434 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:46,601 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:46,771 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:51,940 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:52,146 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:52,318 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:52,499 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:52,679 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:52,855 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:53,032 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:53,225 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:06:53,406 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:06:53,622 INFO  [main] Client: Login successful. cookies=[]headers="Content-Type=application/json; charset=utf-8"; "Content-Length=19"
+2014-09-18 02:07:54,266 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:07:54,270 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:07:54,711 INFO  [main] Client: Login successful. response={"loggedIn":"true"} cookies=[]
+2014-09-18 02:07:54,893 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:07:55,083 INFO  [main] Client: Login successful. response={"loggedIn":"true"} cookies=[]
+2014-09-18 02:07:55,256 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:07:55,437 INFO  [main] Client: Login successful. response={"loggedIn":"true"} cookies=[]
+2014-09-18 02:07:55,596 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:07:55,774 INFO  [main] Client: Login successful. response={"loggedIn":"true"} cookies=[]
+2014-09-18 02:07:55,952 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:07:56,156 INFO  [main] Client: Login successful. response={"loggedIn":"true"} cookies=[]
+2014-09-18 02:07:56,328 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:07:56,516 INFO  [main] Client: Login successful. response={"loggedIn":"true"} cookies=[]
+2014-09-18 02:08:58,815 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:08:58,819 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:09:00,009 ERROR [main] Client: Error on login: [303] 
+2014-09-18 02:09:00,501 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:01,184 ERROR [main] Client: Error on login: [303] 
+2014-09-18 02:09:01,667 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:02,003 ERROR [main] Client: Error on login: [303] 
+2014-09-18 02:09:02,392 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:02,539 ERROR [main] Client: Error on login: [303] 
+2014-09-18 02:09:02,707 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:02,830 ERROR [main] Client: Error on login: [303] 
+2014-09-18 02:09:03,006 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:03,146 ERROR [main] Client: Error on login: [303] 
+2014-09-18 02:09:48,959 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:09:48,963 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:09:49,382 ERROR [main] Client: Error on login: [303]  cookies=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=1b1be93613a73269ca59b1d75649f4a0f50fe4bdrz6d.!)*~g6mr((lmb)o*g7b*t6e!2zyqw2efip0rtg!s7at.6p0p7~0v48(wysc, path=/, maxAge=-1, secure=false]
+2014-09-18 02:09:49,806 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:50,161 ERROR [main] Client: Error on login: [303]  cookies=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=95604029ff7f92504b25a109993f36bb8b95fe53t2p)2!uxd1)hu663ov~v)m6s2dqdi20(8!ketjqvvx3~4h5ckqk~hn0eeme9mxg9, path=/, maxAge=-1, secure=false]
+2014-09-18 02:09:50,555 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:09:51,007 ERROR [main] Client: Error on login: [303]  cookies=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=9946b0027ec061bbb0251eef81e09bd4dc0da74eo_8q*vqyc(jz6nc(ncjbwdfc(bpvb9lat9n50xtpreu'*gf8b6f9l2kvf.mmv6zj, path=/, maxAge=-1, secure=false]
+2014-09-18 02:23:26,300 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:23:26,313 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:23:40,791 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhh29o64</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 02:23:41,003 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:23:53,216 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhh2agik</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 02:23:53,388 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:30:26,188 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:30:26,211 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:30:39,448 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhh37jfn</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 02:30:39,702 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:30:52,020 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhh38c6c</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 02:30:52,204 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:32:22,262 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:32:22,279 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:32:35,480 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhh3e95b</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 02:32:35,716 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:43,103 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:37:43,106 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:37:47,461 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:47,716 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:47,935 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:48,096 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:48,293 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:48,468 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:48,603 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:48,795 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:48,974 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:49,103 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:49,288 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:49,469 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:49,601 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:49,793 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:49,975 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:50,131 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:50,315 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:55,496 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:55,625 INFO  [main] Client: Login redirect. 
+2014-09-18 02:37:55,807 INFO  [main] Client: Login successful. 
+2014-09-18 02:37:55,995 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:37:56,128 INFO  [main] Client: Login redirect. 
+2014-09-18 02:39:55,251 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:39:55,254 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:39:55,661 INFO  [main] Client: Login redirect. cookieMonster=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=fc92a6c66ae73b6c2b0cbbdacfd7cf2f37e5a344ebx*r5z8_ztfzy3!3mhl~un0g5cshbb8vem.4*1ym'x!n9!6po3_.hp98uk7n22', path=/, maxAge=-1, secure=false]
+2014-09-18 02:39:55,871 INFO  [main] Client: Login successful. 
+2014-09-18 02:39:56,057 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:39:56,186 INFO  [main] Client: Login redirect. cookieMonster=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=b6434f187fead9070eb76353503117433d465275o0nn1xey2d03da!2.x6!t~.j7zm.bisz.db!c_*t58o*(6y_'z5dsj)~)djp5na0, path=/, maxAge=-1, secure=false]
+2014-09-18 02:39:56,383 INFO  [main] Client: Login successful. 
+2014-09-18 02:39:56,564 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:39:56,697 INFO  [main] Client: Login redirect. cookieMonster=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=173f5efe0917ffb8bb3252148d3b5cb0a3ba8a9cqw).s(!(_yp4(h3f3xufy0dw*8'yu~zxfx.ptqek(d0m8n8ht2hwyyjt'r!~n9_z, path=/, maxAge=-1, secure=false]
+2014-09-18 02:39:56,883 INFO  [main] Client: Login successful. 
+2014-09-18 02:39:57,075 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:39:57,219 INFO  [main] Client: Login redirect. cookieMonster=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=98017a9749b039b3d79fc429245d8284989504f764w82m88(sfthg3z*rdbv2hzfwos'*jbc*r9lnjspt73wuoqyl_dtps'cf)4imxs, path=/, maxAge=-1, secure=false]
+2014-09-18 02:39:57,418 INFO  [main] Client: Login successful. 
+2014-09-18 02:39:57,595 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:39:57,741 INFO  [main] Client: Login redirect. cookieMonster=[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=cf13611d339a955a2aa9eed540b232dcddafcc63*56ejgt~z5kpfbz*tzqe*od1au578ycj_41st4a1ze~1'av''f297jzdnqy1b9qi, path=/, maxAge=-1, secure=false]
+2014-09-18 02:39:57,924 INFO  [main] Client: Login successful. 
+2014-09-18 02:40:19,842 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:40:19,845 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:40:20,234 INFO  [main] Client: cookieMonster:[]
+2014-09-18 02:40:20,235 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=37f4f56db97202bfae33ff7ee30ce0da28c23799b~qvxe)zar)x9ji799zo4l2on.fmnkuph)wm3dwr)!(s6w'xwn0)dh7*~r!ncq~d, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:20,236 INFO  [main] Client: Login redirect.
+2014-09-18 02:40:20,462 INFO  [main] Client: Login successful. 
+2014-09-18 02:40:20,652 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:40:20,783 INFO  [main] Client: cookieMonster:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=37f4f56db97202bfae33ff7ee30ce0da28c23799b~qvxe)zar)x9ji799zo4l2on.fmnkuph)wm3dwr)!(s6w'xwn0)dh7*~r!ncq~d, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:20,784 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=f3b36d110e695c59a53dc16828f715a8492b90d80uw2ld51.wuj*19xqzhuj___f5'4l_w.y5belwii2zd~r*)m!u~~!5gmgp~t2!j6, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:20,784 INFO  [main] Client: Login redirect.
+2014-09-18 02:40:20,972 INFO  [main] Client: Login successful. 
+2014-09-18 02:40:21,153 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:40:21,283 INFO  [main] Client: cookieMonster:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=f3b36d110e695c59a53dc16828f715a8492b90d80uw2ld51.wuj*19xqzhuj___f5'4l_w.y5belwii2zd~r*)m!u~~!5gmgp~t2!j6, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:21,284 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=ede77a54d361fdfb159956c04d84a6c700bcd8fdydi262il6wi(ejqdusn'kkswnsxb6cg.pqzk'9km'qjc4f5l)_2u(09um*jj046r, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:21,284 INFO  [main] Client: Login redirect.
+2014-09-18 02:40:21,479 INFO  [main] Client: Login successful. 
+2014-09-18 02:40:21,668 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 02:40:21,793 INFO  [main] Client: cookieMonster:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=ede77a54d361fdfb159956c04d84a6c700bcd8fdydi262il6wi(ejqdusn'kkswnsxb6cg.pqzk'9km'qjc4f5l)_2u(09um*jj046r, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:21,793 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=75e4da26d92eaac865417c9fa31dbef7ab266253q6wkfr1)j'hzqu*_ad9._!1ecub6cg1)i3cva3e9*h.1altqoy6jve13baux*3!1, path=/, maxAge=-1, secure=false]
+2014-09-18 02:40:21,793 INFO  [main] Client: Login redirect.
+2014-09-18 02:40:21,993 INFO  [main] Client: Login successful. 
+2014-09-18 02:50:05,477 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:50:05,481 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:50:09,925 INFO  [main] Client: cookieMonster:[]
+2014-09-18 02:50:09,926 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=9eeae55111b9247441256a7633973015a696fcc4tllhb'f4hkq_r*~4hjzd9gjy5qj1ketrh'sz0tc9prr)5tdr9!u(q'eomrt)cd1o, path=/, maxAge=-1, secure=false]
+2014-09-18 02:50:09,927 INFO  [main] Client: Login successful. 
+2014-09-18 02:50:11,049 ERROR [main] Client: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:202)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:210)
+	at potatos.client.rpi.printing.Client.start(Client.java:509)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 10 more
+
+2014-09-18 02:50:16,201 ERROR [main] Client: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:202)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:210)
+	at potatos.client.rpi.printing.Client.start(Client.java:509)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 10 more
+
+2014-09-18 02:51:45,082 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 02:51:45,086 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 02:51:45,597 INFO  [main] Client: cookieMonster:[]
+2014-09-18 02:51:45,598 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=7d209e38f674dcec3f80faa70c0919b50f47c27c26oeub(ve5r31l92hjy_'l68u!b.dcod2q*~yxc~b0*wdrtfrxr9((37uszmj*6., path=/, maxAge=-1, secure=false]
+2014-09-18 02:51:45,598 INFO  [main] Client: Login successful. 
+2014-09-18 02:51:45,751 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411023106050}
+2014-09-18 02:51:45,758 ERROR [main] Client: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:203)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:211)
+	at potatos.client.rpi.printing.Client.start(Client.java:510)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 10 more
+
+2014-09-18 02:51:50,899 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411023111198}
+2014-09-18 02:51:50,901 ERROR [main] Client: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:203)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:211)
+	at potatos.client.rpi.printing.Client.start(Client.java:510)
+	at potatos.client.rpi.printing.Client.main(Client.java:72)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 1 column 272
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 10 more
+
+2014-09-18 11:18:37,709 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 11:18:37,713 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 11:18:50,269 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhjkglji</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 11:18:50,376 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 19:58:45,075 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 19:58:45,079 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 19:58:49,519 INFO  [main] Client: cookieMonster:[]
+2014-09-18 19:58:49,520 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=5c3260001544b191f2e430545d40002fada04fb8yd)1o51uw0or58h3)o!fx6c_*bk8(oq*cqycxu323o0k_!i45cx*_*v8c~uhq157, path=/, maxAge=-1, secure=false]
+2014-09-18 19:58:49,521 INFO  [main] Client: Login successful. 
+2014-09-18 19:58:50,624 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411084729107}
+2014-09-18 19:58:50,657 ERROR [main] Client: java.lang.IllegalArgumentException: Invalid format: "1411084729107" is malformed at "9107"
+	at org.joda.time.format.DateTimeFormatter.parseDateTime(DateTimeFormatter.java:899)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:88)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:45)
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:58)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:204)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:212)
+	at potatos.client.rpi.printing.Client.start(Client.java:511)
+	at potatos.client.rpi.printing.Client.main(Client.java:73)
+
+2014-09-18 19:58:55,802 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411084734329}
+2014-09-18 19:58:55,803 ERROR [main] Client: java.lang.IllegalArgumentException: Invalid format: "1411084734329" is malformed at "4329"
+	at org.joda.time.format.DateTimeFormatter.parseDateTime(DateTimeFormatter.java:899)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:88)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:45)
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:58)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:204)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:212)
+	at potatos.client.rpi.printing.Client.start(Client.java:511)
+	at potatos.client.rpi.printing.Client.main(Client.java:73)
+
+2014-09-18 20:36:30,589 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 20:36:30,592 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 20:36:35,617 INFO  [main] Client: cookieMonster:[]
+2014-09-18 20:36:35,619 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=1e3692a68dad33b03de8c33f09259f158c0471ebg**58*93fvoaj(k04!sjq5~m)fpc87z41j!qv5h6h3dz()qx4)2k5'iaq8cgy8!e, path=/, maxAge=-1, secure=false]
+2014-09-18 20:36:35,619 INFO  [main] Client: Login successful. 
+2014-09-18 20:36:36,826 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":"2014-09-19T00:36:37+0000"}
+2014-09-18 20:36:36,858 ERROR [main] Client: java.lang.IllegalArgumentException: Invalid format: "2014-09-19T00:36:37+0000" is malformed at "+0000"
+	at org.joda.time.format.DateTimeFormatter.parseDateTime(DateTimeFormatter.java:899)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:88)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:45)
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:58)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:204)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:212)
+	at potatos.client.rpi.printing.Client.start(Client.java:511)
+	at potatos.client.rpi.printing.Client.main(Client.java:73)
+
+2014-09-18 20:36:42,011 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":"2014-09-19T00:36:42+0000"}
+2014-09-18 20:36:42,013 ERROR [main] Client: java.lang.IllegalArgumentException: Invalid format: "2014-09-19T00:36:42+0000" is malformed at "+0000"
+	at org.joda.time.format.DateTimeFormatter.parseDateTime(DateTimeFormatter.java:899)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:88)
+	at com.fatboyindustrial.gsonjodatime.DateTimeConverter.deserialize(DateTimeConverter.java:45)
+	at com.google.gson.TreeTypeAdapter.read(TreeTypeAdapter.java:58)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at com.google.gson.Gson.fromJson(Gson.java:689)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:204)
+	at potatos.client.rpi.printing.Client.getJobs(Client.java:212)
+	at potatos.client.rpi.printing.Client.start(Client.java:511)
+	at potatos.client.rpi.printing.Client.main(Client.java:73)
+
+2014-09-18 20:56:35,931 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 20:56:35,935 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 20:56:41,731 INFO  [main] Client: cookieMonster:[]
+2014-09-18 20:56:41,732 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=85391a65ee0a9201b3d58615bfd82c7b5dd40d98!0*!2('o!d95mmyuk3r.z5qsnph_k)k)~g8o4d)_h5__t!ad2_ww8fz4h7wgs7v), path=/, maxAge=-1, secure=false]
+2014-09-18 20:56:41,733 INFO  [main] Client: Login successful. 
+2014-09-18 20:56:42,847 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411088202773}
+2014-09-18 20:56:43,018 INFO  [main] Client: Update successful.
+2014-09-18 20:56:43,018 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 20:56:43,174 INFO  [main] Client: Update successful.
+2014-09-18 20:56:43,174 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 20:56:48,319 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:48,437 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:48,563 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:48,686 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:48,813 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:53,939 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:54,063 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:54,183 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:54,307 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:54,421 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:59,539 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:59,664 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:59,781 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:56:59,912 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 20:57:00,034 ERROR [main] Client: Error on lookup [400] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bad request</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #AD632A;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #9F5805;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F6A960;
+		        border-top: 4px solid #D29052;
+		        color: #733512;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7F5B;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Bad request</h1>
+
+		<p id="detail">
+			For request 'GET /rest/lookupafter/1411088202773' [Invalid Date Format]
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 21:14:15,798 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 21:14:15,802 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 21:14:28,900 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhmkm5lp</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 21:14:29,148 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 21:16:29,071 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 21:16:29,074 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 21:16:34,189 INFO  [main] Client: cookieMonster:[]
+2014-09-18 21:16:34,190 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=e3a4483472644eff760134c5dd9b8bacbf2c2001rt5~8g7wcx!lr2)bdr~*~j3ou1nc33!c7y5h05*p3))1o8800945q1jv0.kj*(xa, path=/, maxAge=-1, secure=false]
+2014-09-18 21:16:34,190 INFO  [main] Client: Login successful. 
+2014-09-18 21:16:36,014 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411089395254}
+2014-09-18 21:16:36,297 INFO  [main] Client: Update successful.
+2014-09-18 21:16:36,298 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 21:16:36,517 INFO  [main] Client: Update successful.
+2014-09-18 21:16:36,518 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 21:16:42,978 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089402535}
+2014-09-18 21:16:48,423 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089408329}
+2014-09-18 21:16:53,966 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089413870}
+2014-09-18 21:16:59,198 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089419102}
+2014-09-18 21:17:04,792 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089424699}
+2014-09-18 21:17:10,606 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089430504}
+2014-09-18 21:17:16,073 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089435982}
+2014-09-18 21:17:21,380 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089441288}
+2014-09-18 21:17:26,723 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089446631}
+2014-09-18 21:17:31,963 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089451871}
+2014-09-18 21:17:37,241 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089457152}
+2014-09-18 21:17:42,653 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089462562}
+2014-09-18 21:17:47,979 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411089467872}
+2014-09-18 22:39:07,282 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 22:39:07,287 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 22:39:19,854 ERROR [main] Client: Error on login: [500] 
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAlFJREFUeNqUU8tOFEEUPVVdNV3dPe8xYRBnjGhmBgKjKzCIiQvBoIaNbly5Z+PSv3Aj7DSiP2B0rwkLGVdGgxITSCRIJGSMEQWZR3eVt5sEFBgTb/dN1yvnnHtPNTPG4PqdHgCMXnPRSZrpSuH8vUJu4DE4rYHDGAZDX62BZttHqTiIayM3gGiXQsgYLEvATaqxU+dy1U13YXapXptpNHY8iwn8KyIAzm1KBdtRZWErpI5lEWTXp5Z/vHpZ3/wyKKwYGGOdAYwR0EZwoezTYApBEIObyELl/aE1/83cp40Pt5mxqCKrE4Ck+mVWKKcI5tA8BLEhRBKJLjez6a7MLq7XZtp+yyOawwCBtkiBVZDKzRk4NN7NQBMYPHiZDFhXY+p9ff7F961vVcnl4R5I2ykJ5XFN7Ab7Gc61VoipNBKF+PDyztu5lfrSLT/wIwCxq0CAGtXHZTzqR2jtwQiXONma6hHpj9sLT7YaPxfTXuZdBGA02Wi7FS48YiTfj+i2NhqtdhP5RC8mh2/Op7y0v6eAcWVLFT8D7kWX5S9mepp+C450MV6aWL1cGnvkxbwHtLW2B9AOkLeUd9KEDuh9fl/7CEj7YH5g+3r/lWfF9In7tPz6T4IIwBJOr1SJyIGQMZQbsh5P9uBq5VJtqHh2mo49pdw5WFoEwKWqWHacaWOjQXWGcifKo6vj5RGS6zykI587XeUIQDqJSmAp+lE4qt19W5P9o8+Lma5DcjsC8JiT607lMVkdqQ0Vyh3lHhmh52tfNy78ajXv0rgYzv8nfwswANuk+7sD/Q0aAAAAAElFTkSuQmCC">
+	    <style>
+		    html, body, pre {
+		        margin: 0;
+		        padding: 0;
+		        font-family: Monaco, 'Lucida Console', monospace;
+		        background: #ECECEC;
+		    }
+		    h1 {
+		        margin: 0;
+		        background: #A31012;
+		        padding: 20px 45px;
+		        color: #fff;
+		        text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+		        border-bottom: 1px solid #690000;
+		        font-size: 28px;
+		    }
+		    p#detail {
+		        margin: 0;
+		        padding: 15px 45px;
+		        background: #F5A0A0;
+		        border-top: 4px solid #D36D6D;
+		        color: #730000;
+		        text-shadow: 1px 1px 1px rgba(255,255,255,.3);
+		        font-size: 14px;
+		        border-bottom: 1px solid #BA7A7A;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Oops, an error occured</h1>
+
+		<p id="detail">
+			This exception has been logged with id <strong>6jhn5plm0</strong>.
+		</p>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+2014-09-18 22:39:19,964 ERROR [main] Client: Login failure on lookup [404] {"message":"Login failure"}
+2014-09-18 22:57:49,760 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 22:57:49,764 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 22:57:54,206 INFO  [main] Client: cookieMonster:[]
+2014-09-18 22:57:54,207 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=bf2964f803126e9c10a28779524a70ea3932047e(_(kk1'*jr74b5w)mm_dgjmb2o4gpeg47pboo149(h5gl*5)s~y7mo.83b*8eeyy, path=/, maxAge=-1, secure=false]
+2014-09-18 22:57:54,208 INFO  [main] Client: Login successful. 
+2014-09-18 22:57:55,315 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411095474942}
+2014-09-18 22:58:00,489 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095480153}
+2014-09-18 22:58:05,608 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095485271}
+2014-09-18 22:58:10,726 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095490390}
+2014-09-18 22:58:15,858 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095495519}
+2014-09-18 22:58:20,979 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095500643}
+2014-09-18 22:58:26,112 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095505776}
+2014-09-18 22:58:31,230 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095510894}
+2014-09-18 22:58:36,345 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095516012}
+2014-09-18 22:58:41,470 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095521137}
+2014-09-18 22:58:46,581 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095526248}
+2014-09-18 22:58:51,698 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095531363}
+2014-09-18 22:59:17,371 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 22:59:17,374 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 22:59:17,868 INFO  [main] Client: cookieMonster:[]
+2014-09-18 22:59:17,870 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=3347e972697df7151a48b5d959a9c95007087ecbq.irc*k!42g4387s9s6.t8f7qv3f94w1e)!'.8mpc72786*mz~j7lm!tonc4x.**, path=/, maxAge=-1, secure=false]
+2014-09-18 22:59:17,870 INFO  [main] Client: Login successful. 
+2014-09-18 22:59:18,004 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411095557671}
+2014-09-18 22:59:23,211 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095562877}
+2014-09-18 22:59:28,336 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095568003}
+2014-09-18 22:59:33,501 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095573126}
+2014-09-18 22:59:38,623 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095578291}
+2014-09-18 22:59:43,742 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095583409}
+2014-09-18 22:59:48,855 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095588523}
+2014-09-18 22:59:53,969 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095593639}
+2014-09-18 22:59:59,087 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095598754}
+2014-09-18 23:00:04,201 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095603869}
+2014-09-18 23:00:09,316 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095608983}
+2014-09-18 23:00:14,429 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095614100}
+2014-09-18 23:00:19,960 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095619627}
+2014-09-18 23:00:25,082 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095624750}
+2014-09-18 23:00:30,201 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095629869}
+2014-09-18 23:00:35,322 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095634993}
+2014-09-18 23:00:40,442 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095640110}
+2014-09-18 23:00:45,561 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095645229}
+2014-09-18 23:00:50,674 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095650343}
+2014-09-18 23:01:49,311 ERROR [main] Client: Some of the configured printers (EPSON_TM-T20) doesn't exist.
+2014-09-18 23:01:49,313 ERROR [main] Client: --EPSON_TM-T20
+2014-09-18 23:01:49,750 INFO  [main] Client: cookieMonster:[]
+2014-09-18 23:01:49,752 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=0d1c8a1b7e54104c36c8f4b5dc10cc44ce7bdf9ft1*z1r~jp5ucz1wn6(4yx.tb75qf9s7fdibnmpd7.!av64j*p84'6uklh2fejx~o, path=/, maxAge=-1, secure=false]
+2014-09-18 23:01:49,752 INFO  [main] Client: Login successful. 
+2014-09-18 23:01:49,886 INFO  [main] Client: Parsing response:{"jobs":[{"id":"a2996810-3d78-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"},{"id":"b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8","data":"%7B%22mode%22%3A%22tagged%22%2C%22comments%22%3A%22hello%22%7D"}],"timestamp":1411095709559}
+2014-09-18 23:01:49,892 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:01:50,028 INFO  [main] Client: Update successful.
+2014-09-18 23:01:50,028 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:01:50,028 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:01:50,149 INFO  [main] Client: Update successful.
+2014-09-18 23:01:50,149 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:01:55,289 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095714960}
+2014-09-18 23:01:55,289 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:01:55,444 INFO  [main] Client: Update successful.
+2014-09-18 23:01:55,444 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:01:55,445 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:01:55,558 INFO  [main] Client: Update successful.
+2014-09-18 23:01:55,559 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:00,671 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095720345}
+2014-09-18 23:02:00,672 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:00,809 INFO  [main] Client: Update successful.
+2014-09-18 23:02:00,809 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:00,809 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:00,927 INFO  [main] Client: Update successful.
+2014-09-18 23:02:00,927 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:06,048 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095725722}
+2014-09-18 23:02:06,048 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:06,159 INFO  [main] Client: Update successful.
+2014-09-18 23:02:06,159 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:06,159 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:06,274 INFO  [main] Client: Update successful.
+2014-09-18 23:02:06,274 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:11,388 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095731059}
+2014-09-18 23:02:11,389 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:11,507 INFO  [main] Client: Update successful.
+2014-09-18 23:02:11,507 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:11,507 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:11,625 INFO  [main] Client: Update successful.
+2014-09-18 23:02:11,625 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:16,737 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095736411}
+2014-09-18 23:02:16,738 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:16,852 INFO  [main] Client: Update successful.
+2014-09-18 23:02:16,853 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:16,853 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:16,985 INFO  [main] Client: Update successful.
+2014-09-18 23:02:16,985 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:22,516 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095742189}
+2014-09-18 23:02:22,516 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:22,645 INFO  [main] Client: Update successful.
+2014-09-18 23:02:22,645 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:22,645 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:22,772 INFO  [main] Client: Update successful.
+2014-09-18 23:02:22,772 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:27,889 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095747561}
+2014-09-18 23:02:27,889 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:28,013 INFO  [main] Client: Update successful.
+2014-09-18 23:02:28,013 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:28,014 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:28,133 INFO  [main] Client: Update successful.
+2014-09-18 23:02:28,133 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:33,240 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095752915}
+2014-09-18 23:02:33,241 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:33,351 INFO  [main] Client: Update successful.
+2014-09-18 23:02:33,351 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:33,352 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:33,500 INFO  [main] Client: Update successful.
+2014-09-18 23:02:33,500 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:38,659 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095758332}
+2014-09-18 23:02:38,659 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:38,780 INFO  [main] Client: Update successful.
+2014-09-18 23:02:38,781 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:38,781 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:38,929 INFO  [main] Client: Update successful.
+2014-09-18 23:02:38,929 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:44,046 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1411095763719}
+2014-09-18 23:02:44,046 INFO  [main] Client: Printing id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:44,171 INFO  [main] Client: Update successful.
+2014-09-18 23:02:44,171 ERROR [main] Client: Print failure (id=b4e5b8b0-3e05-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+2014-09-18 23:02:44,171 INFO  [main] Client: Printing id=a2996810-3d78-11e4-8d1f-485d609a8cf8
+2014-09-18 23:02:44,296 INFO  [main] Client: Update successful.
+2014-09-18 23:02:44,297 ERROR [main] Client: Print failure (id=a2996810-3d78-11e4-8d1f-485d609a8cf8) due to the following exception:java.lang.IndexOutOfBoundsException: Index: 0, Size: 0

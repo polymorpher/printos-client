@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="PotatOSCloudPrintClient" />
+        <module name="printos" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PotatOSCloudPrintClient" target="1.7" />
+      <module name="printos" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
