@@ -28,24 +28,21 @@ public class ESCPTagParser implements AbstractTagParser {
     ));
 
     static int MAX_TAG_LENGTH = -1;
-    static String BARCODE_CMD = "" + (char) 29 + "" + (char) 'k';
+    static String BARCODE_CMD = ESC + '(' + 'B';
     static String BARCODE_MODE = "" + (char) 73;
     static final String BARCODE_CODEB = "" + (char) '{' + "" + (char) 'B';
     static String BARCODE_ENDING = "" + (char) 0;
-    static String PRTCMD_FONT_POINT_8 = ESC + 'X' + (char) 0 + (char) 8 + (char) 0;
-    static String PRTCMD_FONT_POINT_12 = ESC + 'X' + (char) 0 + (char) 12 + (char) 0;
-    static String PRTCMD_FONT_POINT_16 = ESC + 'X' + (char) 0 + (char) 16 + (char) 0;
-    static String PRTCMD_FONT_POINT_22 = ESC + 'X' + (char) 0 + (char) 22 + (char) 0;
-    static String PRTCMD_FONT_POINT_26 = ESC + 'X' + (char) 0 + (char) 26 + (char) 0;
-    static String PRTCMD_FONT_POINT_32 = ESC + 'X' + (char) 0 + (char) 32 + (char) 0;
-    static String PRTCMD_SMALL_TEXT = PRTCMD_FONT_POINT_8;
+    static String PRTCMD_FONT_POINT_10 = ESC + '!' + (char) 1 ;
+    static String PRTCMD_FONT_POINT_12 = ESC + '!' + (char) 0 ;
+    static String PRTCMD_FONT_DOUBLE_WIDTH = ESC + '!' + (char) 32;
+    static String PRTCMD_SMALL_TEXT = PRTCMD_FONT_POINT_10;
     static String PRTCMD_REGULAR_TEXT = PRTCMD_FONT_POINT_12;
-    static String PRTCMD_LARGE_TEXT = PRTCMD_FONT_POINT_16;
-    static String PRTCMD_HUGE_TEXT = PRTCMD_FONT_POINT_22;
-    static String PRTCMD_ENORMOUS_TEXT = PRTCMD_FONT_POINT_26;
-    static String PRTCMD_GIGANTIC_TEXT = PRTCMD_FONT_POINT_32;
-    static String PRTCMD_BOLD_TEXT_ENABLE = ESC + 'E';
-    static String PRTCMD_BOLD_TEXT_DISABLE = ESC + 'F';
+    static String PRTCMD_LARGE_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+    static String PRTCMD_HUGE_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+    static String PRTCMD_ENORMOUS_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+    static String PRTCMD_GIGANTIC_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+    static String PRTCMD_BOLD_TEXT_ENABLE = ESC + '!' + (char)8;
+    static String PRTCMD_BOLD_TEXT_DISABLE = ESC + '!' + (char)0;
     static HashMap<String, Integer> SIZE_TAG_WIDTH_MAP = new HashMap<String, Integer>();
     static HashMap<String, String> SIZE_TAG_COMMAND_MAP = new HashMap<String, String>();
 
@@ -55,12 +52,12 @@ public class ESCPTagParser implements AbstractTagParser {
                 MAX_TAG_LENGTH = tag.length();
             }
         }
-        SIZE_TAG_WIDTH_MAP.put(SMALL_TEXT, 8);
+        SIZE_TAG_WIDTH_MAP.put(SMALL_TEXT, 10);
         SIZE_TAG_WIDTH_MAP.put(REGULAR_TEXT, 12);
-        SIZE_TAG_WIDTH_MAP.put(LARGE_TEXT, 16);
-        SIZE_TAG_WIDTH_MAP.put(HUGE_TEXT, 22);
-        SIZE_TAG_WIDTH_MAP.put(ENORMOUS_TEXT, 26);
-        SIZE_TAG_WIDTH_MAP.put(GIGANTIC_TEXT, 32);
+        SIZE_TAG_WIDTH_MAP.put(LARGE_TEXT, 24);
+        SIZE_TAG_WIDTH_MAP.put(HUGE_TEXT, 24);
+        SIZE_TAG_WIDTH_MAP.put(ENORMOUS_TEXT, 24);
+        SIZE_TAG_WIDTH_MAP.put(GIGANTIC_TEXT, 24);
         SIZE_TAG_COMMAND_MAP.put(SMALL_TEXT, PRTCMD_SMALL_TEXT);
         SIZE_TAG_COMMAND_MAP.put(REGULAR_TEXT, PRTCMD_REGULAR_TEXT);
         SIZE_TAG_COMMAND_MAP.put(LARGE_TEXT, PRTCMD_LARGE_TEXT);
@@ -289,11 +286,19 @@ public class ESCPTagParser implements AbstractTagParser {
                         output += PRTCMD_BOLD_TEXT_DISABLE;
                     } else if (tag.equals(BARCODE_REGION)) {
                         output += "\n\n" + BARCODE_CMD;
-                        output += BARCODE_MODE;
+//                        output += BARCODE_MODE;
                         String code = BarcodeBuilder.buildCodeB(getCurrentTagContent(pos + tag.length() + 2, line));
                         System.out.println(code);
-                        output += (char) (code.length() + BARCODE_CODEB.length());
-                        output += BARCODE_CODEB;
+
+                        output += (char) (code.length()+6);
+                        output += (char) 0;
+                        output += (char) 6; //k
+                        output += (char) 2; //m
+                        output += (char) 0; //s
+                        output += (char) 0; //v1
+                        output += (char) 2; //v2
+                        output += (char) 0; //c
+                        output += (char) 0x42;
                         output += code;
                         output += "\n";
                         continue linesloop;
@@ -386,10 +391,11 @@ public class ESCPTagParser implements AbstractTagParser {
 
     public static void main(String[] args) {
         ESCPOSTagParser tp = new ESCPOSTagParser();
-        //String data="<right><b>Add beef to potato strips. I will come soon.</b></right>abcd<right>Not bold Add beef to potato strips. I will come soon.</right>\n<h3>this is another test</h3>\n<right><h4>testh4</h4>\n<h5>superbig</h5>\n <h6>gigantic</h6></right>";
+        String data="<right><b>Add beef to potato strips. I will come soon.</b></right>abcd<right>Not bold Add beef to potato strips. I will come soon.</right>\n<h3>this is another test</h3>\n<right><h4>testh4</h4>\n<h5>superbig</h5>\n <h6>gigantic</h6></right>";
         //String data="test<right>test from ali at e29</right>dsadasfsafafgsagsagsa<barcode>123dsadsadsadasdadsadsadsadsadsdsasdsadasdasdsadsadsadas45678</barcode>";
-        String data = "61437208990nn<barcode>123321</barcode>";
+//        String data = "61437208990nn<barcode>123321</barcode>";
         try {
+//            System.out.println(PRTCMD_FONT_POINT_8.length());
             System.out.println(tp.validate(data));
             List<String> lines = tp.divideToMultiLines(data, 480);
             for (String line : lines) {
