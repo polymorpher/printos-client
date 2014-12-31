@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2834bb4f-e8f1-45c9-9c91-7e47037e9f36" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/AbstractTagParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/ESCPTagParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_0_13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_0_13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fatboyindustrial_gson_jodatime_serialisers_gson_jodatime_serialisers_1_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/assembly.sbt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/project/build.sbt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/config.ini" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/ESCPOSConverter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/ESCPOSConverterEpsonT88V.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/ESCPOSConverterIcodT90.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/PrintOS.iml" afterPath="$PROJECT_DIR$/printos.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/TagParser.java" afterPath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/ESCPOSTagParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/Client.java" afterPath="$PROJECT_DIR$/src/main/java/potatos/client/rpi/printing/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PrintOSconfig.ini" afterPath="$PROJECT_DIR$/PrintOSconfig.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="2834bb4f-e8f1-45c9-9c91-7e47037e9f36" name="Default" comment="" />
     <ignored path="printos.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -393,7 +368,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../printos-server" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -665,12 +640,12 @@
       <workItem from="1410939296802" duration="228000" />
       <workItem from="1410939528479" duration="30708000" />
       <workItem from="1411101822526" duration="107000" />
-      <workItem from="1413942031165" duration="3069000" />
+      <workItem from="1413942031165" duration="3496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34512000" />
+    <option name="totallyTimeSpent" value="34939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="729" extended-state="6" />
