@@ -1,0 +1,125 @@
+2015-01-08 15:08:17,110 ERROR [main] Client: java.io.FileNotFoundException: PrintOSconfig.ini (No such file or directory)
+2015-01-08 15:08:23,354 ERROR [main] Client: java.io.FileNotFoundException: PrintOSconfig.ini (No such file or directory)
+2015-01-08 15:11:03,835 ERROR [main] Client: java.io.FileNotFoundException: PrintOSconfig.ini (No such file or directory)
+2015-01-08 15:11:49,838 ERROR [main] Client: java.io.FileNotFoundException: PrintOSconfig.ini (No such file or directory)
+2015-01-08 15:13:29,908 INFO  [main] Client: --Found EPSON_TM-T20
+2015-01-08 15:13:30,155 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/destination/login
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListeners(DefaultChannelFuture.java:418)
+	at org.jboss.netty.channel.DefaultChannelFuture.setFailure(DefaultChannelFuture.java:380)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:109)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/destination/login
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 12 more
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:739)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.connect(NioClientBoss.java:150)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:105)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	... 3 more
+
+2015-01-08 15:13:30,193 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListeners(DefaultChannelFuture.java:418)
+	at org.jboss.netty.channel.DefaultChannelFuture.setFailure(DefaultChannelFuture.java:380)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:109)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 12 more
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:739)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.connect(NioClientBoss.java:150)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:105)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	... 3 more
+
+2015-01-08 15:13:35,237 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListeners(DefaultChannelFuture.java:418)
+	at org.jboss.netty.channel.DefaultChannelFuture.setFailure(DefaultChannelFuture.java:380)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:109)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 12 more
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:739)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.connect(NioClientBoss.java:150)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:105)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	... 3 more
+
+2015-01-08 15:13:40,281 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListeners(DefaultChannelFuture.java:418)
+	at org.jboss.netty.channel.DefaultChannelFuture.setFailure(DefaultChannelFuture.java:380)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:109)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000 to http://tableos.potatos.cc:9000/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 12 more
+Caused by: java.net.ConnectException: Connection refused: tableos.potatos.cc/23.236.52.243:9000
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:739)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.connect(NioClientBoss.java:150)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.processSelectedKeys(NioClientBoss.java:105)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.process(NioClientBoss.java:79)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:312)
+	at org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	... 3 more
+
+2015-01-08 15:22:57,597 INFO  [main] Client: --Found EPSON_TM-T20
+2015-01-08 15:22:57,865 INFO  [main] Client: cookieMonster:[]
+2015-01-08 15:22:57,866 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=52d5b4a81543e1532520404c68bc2438fb30b69dr77!2h38gy.6pyy9iwo_nugu7s)b83l92)xd2_gak1ql9xygkowiz6we~'gn6)8d, path=/, maxAge=-1, secure=false]
+2015-01-08 15:22:57,866 INFO  [main] Client: Login successful. 
+2015-01-08 15:22:57,920 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420748576707}
+2015-01-08 15:23:03,021 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420748581808}
+2015-01-08 15:23:08,080 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420748586868}
+2015-01-08 15:23:13,142 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420748591930}

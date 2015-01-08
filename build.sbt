@@ -6,6 +6,8 @@ scalaVersion := "2.10.4"
 
 assemblyJarName in assembly := "printos.jar"
 
+mainClass in assembly := Some("potatos.client.rpi.printing.Client")
+
 libraryDependencies ++= Seq(
   "com.google.code.gson" % "gson" % "2.2.4",
   "ch.qos.logback" % "logback-classic" % "1.1.2",

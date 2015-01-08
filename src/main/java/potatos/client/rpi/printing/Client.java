@@ -1,18 +1,11 @@
 package potatos.client.rpi.printing;
 
 import java.io.*;
-import java.net.*;
 import java.util.HashMap;
-import javax.print.*;
-import javax.print.attribute.*;
-import javax.print.attribute.standard.*;
 import java.util.*;
 
-import com.fatboyindustrial.gsonjodatime.Converters;
 import com.google.gson.*;
 
-import java.text.*;
-import java.net.URLDecoder;
 import java.nio.charset.Charset;
 
 import javax.print.Doc;
@@ -21,7 +14,6 @@ import javax.print.DocPrintJob;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
-import javax.print.event.PrintJobAdapter;
 import javax.print.event.PrintJobEvent;
 import javax.print.event.PrintJobListener;
 
@@ -29,11 +21,8 @@ import potatos.client.util.*;
 //import com.google.common.base.Charsets;
 //import com.google.common.io.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.locks.*;
 
-import potatos.client.model.*;
 import com.ning.http.client.*;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -42,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class Client {
     //	static String ROOT_DIR="/home/pi";
     //static String ROOT_DIR="/home/polymorpher/workspace-javaee/PotatOSCloudPrintClient";
-    static String configfile = "PrintOSconfig.ini";
+    static String configFile = "PrintOSconfig.ini";
     static final Logger logger = LoggerFactory.getLogger(Client.class);
     static int ERROR_NONE = 0;
     static int ERROR_JSON = 1;
@@ -73,6 +62,9 @@ public class Client {
     AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
 
     public static void main(String[] args) {
+        if (args.length >= 1) {
+            configFile = args[0];
+        }
         Client c = new Client();
         c.start();
     }
@@ -212,7 +204,7 @@ public class Client {
     }
 
     private PrintJobQueue getJobs() throws Exception {
-        return getJobs(MAX_ATTEMPTS);
+        return getJobs(1);
     }
 
 //    //member function!
@@ -257,9 +249,9 @@ public class Client {
         return sb.toString();
     }
 
-    Client() {
+    public Client() {
         try {
-            config = readConfig(configfile);
+            config = readConfig(configFile);
         } catch (Exception e) {
             logger.error(e.toString());
             System.exit(1);
