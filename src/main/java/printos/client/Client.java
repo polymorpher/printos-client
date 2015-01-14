@@ -1,4 +1,4 @@
-package potatos.client.rpi.printing;
+package printos.client;
 
 import java.io.*;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import javax.print.SimpleDoc;
 import javax.print.event.PrintJobEvent;
 import javax.print.event.PrintJobListener;
 
-import potatos.client.util.*;
+import printos.client.util.*;
 //import com.google.common.base.Charsets;
 //import com.google.common.io.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class Client {
     //	static String ROOT_DIR="/home/pi";
     //static String ROOT_DIR="/home/polymorpher/workspace-javaee/PotatOSCloudPrintClient";
-    static String configFile = "PrintOSconfig.ini";
+    public static String configFile = "PrintOSconfig.ini";
     static final Logger logger = LoggerFactory.getLogger(Client.class);
     static int ERROR_NONE = 0;
     static int ERROR_JSON = 1;
@@ -263,7 +263,7 @@ public class Client {
         if (config.containsKey("sound")) {
             bleepSoundPath = config.get("sound");
         } else {
-            bleepSoundPath = "/bell.wav";
+            bleepSoundPath = "/beep.wav";
         }
         if (config.containsKey("printer")) {
             selectPrinter(config.get("printer"));

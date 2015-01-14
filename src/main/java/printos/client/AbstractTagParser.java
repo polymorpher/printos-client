@@ -1,4 +1,4 @@
-package potatos.client.rpi.printing;
+package printos.client;
 
 /**
  * Created by polymorpher on 10/21/14.

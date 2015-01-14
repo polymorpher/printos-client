@@ -1,4 +1,4 @@
-package potatos.client.util;
+package printos.client.util;
 import java.util.*;
 /**
  * Created by polymorpher on 6/24/14.

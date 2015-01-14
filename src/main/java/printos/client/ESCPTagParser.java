@@ -1,4 +1,4 @@
-package potatos.client.rpi.printing;
+package printos.client;
 
 import java.io.BufferedWriter;
 import java.io.File;

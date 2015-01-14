@@ -1,10 +1,12 @@
-package potatos.client.model;
+package printos.client.model;
 
-public class TicketItemProperty {
+public class TicketItem {
 	Integer id;
 	String name;
+	String portion;
 	Integer quantity;
 	Double price;
+	TicketItemProperty[] properties;
 	public Integer getId() {
 		return id;
 	}
@@ -16,6 +18,12 @@ public class TicketItemProperty {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getPortion() {
+		return portion;
+	}
+	public void setPortion(String portion) {
+		this.portion = portion;
 	}
 	public Integer getQuantity() {
 		return quantity;
@@ -29,4 +37,11 @@ public class TicketItemProperty {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	public TicketItemProperty[] getProperties() {
+		return properties;
+	}
+	public void setProperties(TicketItemProperty[] properties) {
+		this.properties = properties;
+	}
+	
 }

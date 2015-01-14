@@ -1,5 +1,5 @@
-package potatos.client.rpi.printing;
-import potatos.client.util.*;
+package printos.client;
+import printos.client.util.*;
 public class BarcodeBuilder {
 	static String BARCODE_CMD=(char)29+""+(char)107;
 	static String BARCODE_MODE=""+(char)73;

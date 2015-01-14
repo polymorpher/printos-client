@@ -1,4 +1,4 @@
-package potatos.client.rpi.printing;
+package printos.client;
 
 public class InvalidTagException extends TagParsingException {
 

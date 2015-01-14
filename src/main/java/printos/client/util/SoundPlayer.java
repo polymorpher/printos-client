@@ -1,4 +1,4 @@
-package potatos.client.util;
+package printos.client.util;
 
 import javax.sound.sampled.*;
 

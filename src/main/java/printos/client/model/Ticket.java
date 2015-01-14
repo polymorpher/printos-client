@@ -1,4 +1,4 @@
-package potatos.client.model;
+package printos.client.model;
 
 public class Ticket {
 	String mode;
