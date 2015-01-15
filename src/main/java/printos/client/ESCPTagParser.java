@@ -22,9 +22,11 @@ public class ESCPTagParser implements AbstractTagParser {
     static String ALIGN_LEFT = "left";
     static String ALIGN_CENTER = "center";
     static String ALIGN_RIGHT = "right";
+    static String RAW_COMMAND = "command";
     static Set<String> VALID_TAGS = new HashSet<String>(Arrays.asList(
-            new String[]{SMALL_TEXT, REGULAR_TEXT, LARGE_TEXT, HUGE_TEXT, ENORMOUS_TEXT, GIGANTIC_TEXT,
-                    BOLD_TEXT, ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, BARCODE_REGION}
+            new String[]{SMALL_TEXT, REGULAR_TEXT,
+                    LARGE_TEXT, HUGE_TEXT, ENORMOUS_TEXT, GIGANTIC_TEXT,
+                    BOLD_TEXT, ALIGN_LEFT, ALIGN_CENTER, ALIGN_RIGHT, BARCODE_REGION, RAW_COMMAND}
     ));
 
     static int MAX_TAG_LENGTH = -1;
@@ -37,10 +39,14 @@ public class ESCPTagParser implements AbstractTagParser {
     static String PRTCMD_FONT_DOUBLE_WIDTH = ESC + '!' + (char) 32;
     static String PRTCMD_SMALL_TEXT = PRTCMD_FONT_POINT_10;
     static String PRTCMD_REGULAR_TEXT = PRTCMD_FONT_POINT_12;
-    static String PRTCMD_LARGE_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
-    static String PRTCMD_HUGE_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
-    static String PRTCMD_ENORMOUS_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
-    static String PRTCMD_GIGANTIC_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+//    static String PRTCMD_LARGE_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+//    static String PRTCMD_HUGE_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+//    static String PRTCMD_ENORMOUS_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+//    static String PRTCMD_GIGANTIC_TEXT = PRTCMD_FONT_DOUBLE_WIDTH;
+    static String PRTCMD_LARGE_TEXT = PRTCMD_FONT_POINT_12;
+    static String PRTCMD_HUGE_TEXT = PRTCMD_FONT_POINT_12;
+    static String PRTCMD_ENORMOUS_TEXT = PRTCMD_FONT_POINT_12;
+    static String PRTCMD_GIGANTIC_TEXT = PRTCMD_FONT_POINT_12;
     static String PRTCMD_BOLD_TEXT_ENABLE = ESC + '!' + (char)8;
     static String PRTCMD_BOLD_TEXT_DISABLE = ESC + '!' + (char)0;
     static HashMap<String, Integer> SIZE_TAG_WIDTH_MAP = new HashMap<String, Integer>();
@@ -54,10 +60,10 @@ public class ESCPTagParser implements AbstractTagParser {
         }
         SIZE_TAG_WIDTH_MAP.put(SMALL_TEXT, 10);
         SIZE_TAG_WIDTH_MAP.put(REGULAR_TEXT, 12);
-        SIZE_TAG_WIDTH_MAP.put(LARGE_TEXT, 24);
-        SIZE_TAG_WIDTH_MAP.put(HUGE_TEXT, 24);
-        SIZE_TAG_WIDTH_MAP.put(ENORMOUS_TEXT, 24);
-        SIZE_TAG_WIDTH_MAP.put(GIGANTIC_TEXT, 24);
+        SIZE_TAG_WIDTH_MAP.put(LARGE_TEXT, 12);
+        SIZE_TAG_WIDTH_MAP.put(HUGE_TEXT, 12);
+        SIZE_TAG_WIDTH_MAP.put(ENORMOUS_TEXT, 12);
+        SIZE_TAG_WIDTH_MAP.put(GIGANTIC_TEXT, 12);
         SIZE_TAG_COMMAND_MAP.put(SMALL_TEXT, PRTCMD_SMALL_TEXT);
         SIZE_TAG_COMMAND_MAP.put(REGULAR_TEXT, PRTCMD_REGULAR_TEXT);
         SIZE_TAG_COMMAND_MAP.put(LARGE_TEXT, PRTCMD_LARGE_TEXT);
@@ -390,8 +396,9 @@ public class ESCPTagParser implements AbstractTagParser {
     }
 
     public static void main(String[] args) {
-        ESCPOSTagParser tp = new ESCPOSTagParser();
-        String data="<right><b>Add beef to potato strips. I will come soon.</b></right>abcd<right>Not bold Add beef to potato strips. I will come soon.</right>\n<h3>this is another test</h3>\n<right><h4>testh4</h4>\n<h5>superbig</h5>\n <h6>gigantic</h6></right>";
+        ESCPTagParser tp = new ESCPTagParser();
+        String data="<right><b>Add beef to potato strips. I will come soon <command>test</command>" +
+                ".</b></right>abcd<right>Not bold Add beef to potato strips. I will come soon.</right>\n<h3>this is another test</h3>\n<right><h4>testh4</h4>\n<h5>superbig</h5>\n <h6>gigantic</h6></right>";
         //String data="test<right>test from ali at e29</right>dsadasfsafafgsagsagsa<barcode>123dsadsadsadasdadsadsadsadsadsdsasdsadasdasdsadsadsadas45678</barcode>";
 //        String data = "61437208990nn<barcode>123321</barcode>";
         try {

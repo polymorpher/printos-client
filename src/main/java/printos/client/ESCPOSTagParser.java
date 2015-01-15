@@ -25,9 +25,10 @@ public class ESCPOSTagParser implements AbstractTagParser{
 	static String ALIGN_LEFT="left";
 	static String ALIGN_CENTER="center";
 	static String ALIGN_RIGHT="right";
+	static String RAW_COMMAND = "command";
 	static Set<String> VALID_TAGS=new HashSet<String>(Arrays.asList(
 			new String[]{SMALL_TEXT,REGULAR_TEXT,LARGE_TEXT,HUGE_TEXT,ENORMOUS_TEXT,GIGANTIC_TEXT,
-					BOLD_TEXT,ALIGN_LEFT,ALIGN_CENTER,ALIGN_RIGHT,BARCODE_REGION}
+					BOLD_TEXT,ALIGN_LEFT,ALIGN_CENTER,ALIGN_RIGHT,BARCODE_REGION, RAW_COMMAND}
 			));
 			
 	static int MAX_TAG_LENGTH=-1;
