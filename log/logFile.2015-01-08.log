@@ -1,0 +1,11 @@
+2015-01-08 15:31:39,106 INFO  [main] Client: --Found EPSON_TM-T20
+2015-01-08 15:31:39,304 INFO  [main] Client: cookieMonster:[]
+2015-01-08 15:31:39,305 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=2f9c592646746e3177364598ed6ffc73fe86b866g4~e3tuiob)bqb'jkz*h6_p_.c0'2b5jl1oua2pfp9'b36b4.(*f0ddvkw)8omty, path=/, maxAge=-1, secure=false]
+2015-01-08 15:31:39,305 INFO  [main] Client: Login successful. 
+2015-01-08 15:31:39,359 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749098151}
+2015-01-08 15:31:44,448 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749103239}
+2015-01-08 15:31:49,505 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749108297}
+2015-01-08 15:31:54,562 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749113354}
+2015-01-08 15:31:59,621 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749118412}
+2015-01-08 15:32:04,677 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749123468}
+2015-01-08 15:32:09,738 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1420749128530}

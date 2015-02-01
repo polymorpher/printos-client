@@ -22,6 +22,7 @@ import printos.client.util.*;
 //import com.google.common.io.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.ning.http.client.*;
 import org.joda.time.DateTime;
@@ -29,26 +30,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Client {
-    //	static String ROOT_DIR="/home/pi";
-    //static String ROOT_DIR="/home/polymorpher/workspace-javaee/PotatOSCloudPrintClient";
-    public static String configFile = "PrintOSconfig.ini";
     static final Logger logger = LoggerFactory.getLogger(Client.class);
+    public static String configFile = "PrintOSconfig.ini";
     static int ERROR_NONE = 0;
-    static int ERROR_JSON = 1;
     static int ERROR_TAG = 2;
     static int ERROR_PRINTER = 3;
+    static int ERROR_PRINT_JOB_ATTENTION = 4;
     static int ERROR_OTHERS = 1337;
-    static int version = 6;
-    static int MAX_ATTEMPTS = 5;
-
+    static int MAXIMUM_WAIT_MILLIS_BEFORE_SHUTDOWN = 30000;
+    static AtomicInteger numListeners = new AtomicInteger(0);
     String bleepSoundPath;
-    //    public Set<UUID> printStack = new HashSet<UUID>();
-//    public ReentrantLock printStackLock = new ReentrantLock();
     Map<UUID, String> printJobs = new ConcurrentHashMap<UUID, String>();
     Map<String, String> config = new HashMap<String, String>();
     AbstractTagParser parser;
     int sleeptime = 1000;
-    //    Gson gson = Converters.registerDateTime(new GsonBuilder()).create();
     Gson gson = new Gson();
     String PRINTER_NAME = "";
     String CUT_EPSON = "" + (char) 29 + 'V' + (char) 0;
@@ -60,58 +55,111 @@ public class Client {
     LoginInfo loginInfo;
     Long lastLookupTime = null;
     AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+    ArrayList<PrintService> serviceList;
+
+    public Client() {
+        try {
+            config = readConfig(configFile);
+        } catch (Exception e) {
+            logger.error(e.toString());
+            System.exit(1);
+        }
+
+        if (config.containsKey("sleep")) {
+            sleeptime = Integer.parseInt(config.get("sleep")) * 1000;
+        }
+        if (config.containsKey("sound")) {
+            bleepSoundPath = config.get("sound");
+        } else {
+            bleepSoundPath = "/beep.wav";
+        }
+        if (config.containsKey("printer")) {
+            selectPrinter(config.get("printer"));
+        } else {
+            logger.error("Printer is not defined in config file. Syntax: printer=aaa;bbb;...");
+            System.exit(2);
+        }
+        loginInfo = new LoginInfo(config.get("user"), config.get("dest"), config.get("pass"));
+        try {
+            loginToServer();
+        } catch (Exception e) {
+            logger.error(getStackTrace(e));
+        }
+    }
 
     public static void main(String[] args) {
         if (args.length >= 1) {
             configFile = args[0];
         }
+        addShutdownHook();
         Client c = new Client();
         c.start();
     }
 
-    static class PrintJob {
-        UUID id;
-        String data;
+    private static String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
     }
 
-    static class PrintJobQueue {
-        PrintJob[] jobs;
-        Long timestamp;
+    public static String getStackTrace(final Throwable throwable) {
+        final StringWriter sw = new StringWriter();
+        final PrintWriter pw = new PrintWriter(sw, true);
+        throwable.printStackTrace(pw);
+        return sw.getBuffer().toString();
     }
 
-    static class JobUpdate {
-        UUID id;
-        String status;
-        Integer errorCode;
-        Boolean keepActive;
-        Boolean printed;
-
-        public JobUpdate(UUID id, String status, Integer errorCode, Boolean keepActive, Boolean printed) {
-            this.id = id;
-            this.status = status;
-            this.errorCode = errorCode;
-            this.printed = printed;
-            this.keepActive = keepActive;
-        }
-
-        public String toString() {
-            return "[id: " + id.toString() +
-                    ", status: " + status +
-                    " errorCode: " + errorCode.toString() +
-                    " printed: " + printed.toString() + "]";
-        }
+    public static String spaceStr(int len) {
+        return new String(new char[len]).replace("\0", ".");
     }
 
-    static class LoginInfo {
-        String userUsername;
-        String destinationUsername;
-        String password;
+    static HashMap<String, String> readConfig(String filename) throws Exception {
+        FileInputStream fis = new FileInputStream(filename);
+        DataInputStream dis = new DataInputStream(fis);
+        BufferedReader br = new BufferedReader(new InputStreamReader(dis));
 
-        public LoginInfo(String user, String dest, String pass) {
-            userUsername = user;
-            destinationUsername = dest;
-            password = pass;
+        HashMap<String, String> r = new HashMap<String, String>();
+
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.trim().length() != 0 && line.trim().charAt(0) != '#') {
+                int pos = line.indexOf('=');
+                if (pos == -1) {
+                    br.close();
+                    fis.close();
+                    throw new Exception("Bad line in config file: " + filename);
+                }
+                r.put(line.substring(0, pos), line.substring(pos + 1));
+            }
         }
+        br.close();
+        fis.close();
+
+        return r;
+    }
+
+    public static void addShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                logger.info("Shutting down...");
+                Long now = System.currentTimeMillis();
+                try {
+                    while (numListeners.get() > 0) {
+                        if (System.currentTimeMillis() - now > MAXIMUM_WAIT_MILLIS_BEFORE_SHUTDOWN) {
+                            break;
+                        } else {
+                            Thread.sleep(1000);
+                        }
+                    }
+                } catch (Exception e) {
+                    logger.error("Error during shutdown: " + e.getMessage());
+                }
+                logger.info("Shutdown complete.");
+            }
+        });
     }
 
     private void loginToServer() throws Exception {
@@ -164,6 +212,39 @@ public class Client {
         }
     }
 
+//    //member function!
+//    private void updateAndLogin(JobUpdate u, int numAttemptsRemaining) {
+//        if (numAttemptsRemaining == 0) {
+//            logger.error("Update-login exceeds maximum number of attempts");
+//            return;
+//        }
+//        if (cookieMonster != null) {
+//            int rcode = -1;
+//            try {
+//                rcode = updatePrintJob(u, cookieMonster);
+//            } catch (Exception e) {
+//                logger.error(getStackTrace(e));
+//            }
+//            if (rcode != 200) {
+//                updateAndLogin(u, numAttemptsRemaining - 1);
+//            } else {
+//                logger.debug("Update succeeded " + u.toString());
+//                return;
+//            }
+//        } else {
+//            try {
+//                cookieMonster = loginToServer(loginInfo);
+//            } catch (Exception e) {
+//                logger.error(getStackTrace(e));
+//            }
+//            updateAndLogin(u, numAttemptsRemaining - 1);
+//        }
+//    }
+//
+//    private void updateAndLogin(JobUpdate u) {
+//        updateAndLogin(u, 5);
+//    }
+
     private void updatePrintJob(JobUpdate u) {
         try {
             updatePrintJob(u, 5);
@@ -207,89 +288,6 @@ public class Client {
         return getJobs(1);
     }
 
-//    //member function!
-//    private void updateAndLogin(JobUpdate u, int numAttemptsRemaining) {
-//        if (numAttemptsRemaining == 0) {
-//            logger.error("Update-login exceeds maximum number of attempts");
-//            return;
-//        }
-//        if (cookieMonster != null) {
-//            int rcode = -1;
-//            try {
-//                rcode = updatePrintJob(u, cookieMonster);
-//            } catch (Exception e) {
-//                logger.error(getStackTrace(e));
-//            }
-//            if (rcode != 200) {
-//                updateAndLogin(u, numAttemptsRemaining - 1);
-//            } else {
-//                logger.debug("Update succeeded " + u.toString());
-//                return;
-//            }
-//        } else {
-//            try {
-//                cookieMonster = loginToServer(loginInfo);
-//            } catch (Exception e) {
-//                logger.error(getStackTrace(e));
-//            }
-//            updateAndLogin(u, numAttemptsRemaining - 1);
-//        }
-//    }
-//
-//    private void updateAndLogin(JobUpdate u) {
-//        updateAndLogin(u, 5);
-//    }
-
-    private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
-    }
-
-    public Client() {
-        try {
-            config = readConfig(configFile);
-        } catch (Exception e) {
-            logger.error(e.toString());
-            System.exit(1);
-        }
-
-        if (config.containsKey("sleep")) {
-            sleeptime = Integer.parseInt(config.get("sleep")) * 1000;
-        }
-        if (config.containsKey("sound")) {
-            bleepSoundPath = config.get("sound");
-        } else {
-            bleepSoundPath = "/beep.wav";
-        }
-        if (config.containsKey("printer")) {
-            selectPrinter(config.get("printer"));
-        } else {
-            logger.error("Printer is not defined in config file. Syntax: printer=aaa;bbb;...");
-            System.exit(2);
-        }
-        loginInfo = new LoginInfo(config.get("user"), config.get("dest"), config.get("pass"));
-        try {
-            loginToServer();
-        } catch (Exception e) {
-            logger.error(getStackTrace(e));
-        }
-    }
-
-    public static String getStackTrace(final Throwable throwable) {
-        final StringWriter sw = new StringWriter();
-        final PrintWriter pw = new PrintWriter(sw, true);
-        throwable.printStackTrace(pw);
-        return sw.getBuffer().toString();
-    }
-
-    public static String spaceStr(int len) {
-        return new String(new char[len]).replace("\0", ".");
-    }
-
     String filterToPrintableString(String s, int width) {
         String ns = s.substring(0, 0);
         char lc = s.charAt(0);
@@ -325,8 +323,6 @@ public class Client {
         return r;
     }
 
-    ArrayList<PrintService> serviceList;
-
     void selectPrinter(String name) {
         String[] retPrinters = name.split(";");
         ArrayList<String> requiredPrinters = new ArrayList<String>();
@@ -358,147 +354,18 @@ public class Client {
             return;
         } else {
             PRINTER_NAME = name;
-            if (PRINTER_NAME.equals("Icod-T90")) {
+            if (PRINTER_NAME.toLowerCase().equals("icod-t90")) {
                 cutCommand = CUT_LEGACY;
             } else {
                 cutCommand = CUT_EPSON;
             }
-            if (PRINTER_NAME.contains("Dascom") && PRINTER_NAME.contains("2610")) {
+            if (PRINTER_NAME.toLowerCase().contains("dascom") && PRINTER_NAME.contains("2610")) {
                 parser = new ESCPTagParser();
                 defaultLineWidth = 800;
             } else {
                 parser = new ESCPOSTagParser();
             }
             System.out.println("We FOUND \"" + name + "\" !!!!!!!!!!!");
-        }
-    }
-
-
-    static HashMap<String, String> readConfig(String filename) throws Exception {
-        FileInputStream fis = new FileInputStream(filename);
-        DataInputStream dis = new DataInputStream(fis);
-        BufferedReader br = new BufferedReader(new InputStreamReader(dis));
-
-        HashMap<String, String> r = new HashMap<String, String>();
-
-        String line;
-        while ((line = br.readLine()) != null) {
-            if (line.trim().length() != 0 && line.trim().charAt(0) != '#') {
-                int pos = line.indexOf('=');
-                if (pos == -1) {
-                    br.close();
-                    fis.close();
-                    throw new Exception("Bad line in config file: " + filename);
-                }
-                r.put(line.substring(0, pos), line.substring(pos + 1));
-            }
-        }
-        br.close();
-        fis.close();
-
-        return r;
-    }
-
-//    public void printStackRemove(UUID id) {
-//        printStackLock.lock();
-//        try {
-//            if (printStack.contains(id)) {
-//                printStack.remove(id);
-//            }
-//        } finally {
-//            printStackLock.unlock();
-//        }
-//    }
-
-    class Listener implements PrintJobListener {
-        UUID id;
-        Boolean eventAlreadyFired;
-
-        public Listener(UUID id) {
-            this.id = id;
-            eventAlreadyFired = false;
-        }
-
-        @Override
-        public void printDataTransferCompleted(PrintJobEvent arg0) {
-
-        }
-
-        @Override
-        public void printJobCanceled(PrintJobEvent arg0) {
-            synchronized (eventAlreadyFired) {
-                if (eventAlreadyFired) return;
-                eventAlreadyFired = true;
-            }
-            JobUpdate u = new JobUpdate(id, "PrintJob cancelled by printer! " + arg0.toString(),
-                    ERROR_OTHERS, true, false);
-            updatePrintJob(u);
-            logger.info("PrintJob [" + id + "] cancelled by printer. msg:" + arg0.toString());
-//            printJobs.remove(id);
-
-        }
-
-        @Override
-        public void printJobCompleted(PrintJobEvent arg0) {
-            synchronized (eventAlreadyFired) {
-                if (eventAlreadyFired) return;
-                eventAlreadyFired = true;
-            }
-            JobUpdate u = new JobUpdate(id, "Completed",
-                    ERROR_NONE, false, true);
-
-            logger.info("PrintJob Completed: " + id.toString());
-            updatePrintJob(u);
-            try {
-                SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
-            } catch (Exception e) {
-                logger.error("Unable to play sound: " + e.getMessage());
-                e.printStackTrace();
-            }
-            printJobs.remove(id);
-
-        }
-
-        @Override
-        public void printJobFailed(PrintJobEvent arg0) {
-            synchronized (eventAlreadyFired) {
-                if (eventAlreadyFired) return;
-                eventAlreadyFired = true;
-            }
-            JobUpdate u = new JobUpdate(id, "PrintJob failed! " + arg0.toString(), ERROR_OTHERS, true, false);
-            logger.error("PrintJob [" + id + "] failed " + arg0.toString());
-//            printJobs.remove(id);
-
-        }
-
-        @Override
-        public void printJobNoMoreEvents(PrintJobEvent arg0) {
-            synchronized (eventAlreadyFired) {
-                if (eventAlreadyFired) return;
-                eventAlreadyFired = true;
-            }
-            JobUpdate u = new JobUpdate(id, "Completed", ERROR_NONE, false, true);
-
-            logger.info("PrintJob Completed (No more event): " + id.toString());
-            updatePrintJob(u);
-            try {
-                SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
-            } catch (Exception e) {
-                logger.error("Unable to play sound: " + e.getMessage());
-                e.printStackTrace();
-            }
-            printJobs.remove(id);
-        }
-
-        @Override
-        public void printJobRequiresAttention(PrintJobEvent arg0) {
-            synchronized (eventAlreadyFired) {
-                if (eventAlreadyFired) return;
-                eventAlreadyFired = true;
-            }
-            JobUpdate u = new JobUpdate(id, "PrintJob error! " + arg0.toString(), ERROR_OTHERS, true, false);
-            logger.info("PrintJob [" + id + "] error " + arg0.toString());
-//            printJobs.remove(id);
         }
     }
 
@@ -509,6 +376,7 @@ public class Client {
             DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
             DocPrintJob printJob = serviceList.get(0).createPrintJob();
             printJob.addPrintJobListener(new Listener(id));
+            numListeners.incrementAndGet();
             Doc document = new SimpleDoc(new ByteArrayInputStream(s.getBytes(Charset.forName("ASCII"))), flavor, null);
             printJob.print(document, null);
             logger.info("Printed: " + data);
@@ -520,7 +388,6 @@ public class Client {
                 updatePrintJob(new JobUpdate(id, getStackTrace(e), ERROR_OTHERS, true, false));
             }
             logger.error("Print failure (id=" + id.toString() + ") due to the following exception:" + e.toString());
-
         }
     }
 
@@ -551,5 +418,165 @@ public class Client {
             }
         }
     }
+
+    static class PrintJob {
+        UUID id;
+        String data;
+    }
+
+//    public void printStackRemove(UUID id) {
+//        printStackLock.lock();
+//        try {
+//            if (printStack.contains(id)) {
+//                printStack.remove(id);
+//            }
+//        } finally {
+//            printStackLock.unlock();
+//        }
+//    }
+
+    static class PrintJobQueue {
+        PrintJob[] jobs;
+        Long timestamp;
+    }
+
+    static class JobUpdate {
+        UUID id;
+        String status;
+        Integer errorCode;
+        Boolean keepActive;
+        Boolean printed;
+
+        public JobUpdate(UUID id, String status, Integer errorCode, Boolean keepActive, Boolean printed) {
+            this.id = id;
+            this.status = status;
+            this.errorCode = errorCode;
+            this.printed = printed;
+            this.keepActive = keepActive;
+        }
+
+        public String toString() {
+            return "[id: " + id.toString() +
+                    ", status: " + status +
+                    " errorCode: " + errorCode.toString() +
+                    " printed: " + printed.toString() + "]";
+        }
+    }
+
+    static class LoginInfo {
+        String userUsername;
+        String destinationUsername;
+        String password;
+
+        public LoginInfo(String user, String dest, String pass) {
+            userUsername = user;
+            destinationUsername = dest;
+            password = pass;
+        }
+    }
+
+    class Listener implements PrintJobListener {
+        UUID id;
+        Boolean eventAlreadyFired;
+
+        public Listener(UUID id) {
+            this.id = id;
+            eventAlreadyFired = false;
+        }
+
+        void close() {
+            numListeners.decrementAndGet();
+        }
+
+        @Override
+        public void printDataTransferCompleted(PrintJobEvent arg0) {
+
+        }
+
+        @Override
+        public void printJobCanceled(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
+            JobUpdate u = new JobUpdate(id, "PrintJob cancelled by printer! " + arg0.toString(),
+                    ERROR_OTHERS, true, false);
+            updatePrintJob(u);
+            logger.info("PrintJob [" + id + "] cancelled by printer. msg:" + arg0.toString());
+//            printJobs.remove(id);
+            close();
+
+        }
+
+        @Override
+        public void printJobCompleted(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
+            JobUpdate u = new JobUpdate(id, "Completed",
+                    ERROR_NONE, false, true);
+
+            logger.info("PrintJob Completed: " + id.toString());
+            updatePrintJob(u);
+            try {
+                SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
+            } catch (Exception e) {
+                logger.error("Unable to play sound: " + e.getMessage());
+                e.printStackTrace();
+            }
+            printJobs.remove(id);
+            close();
+
+        }
+
+        @Override
+        public void printJobFailed(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
+            JobUpdate u = new JobUpdate(id, "Failed: " + arg0.toString(), ERROR_PRINTER, true, false);
+            updatePrintJob(u);
+            logger.error("PrintJob [" + id + "] failed " + arg0.toString());
+//            printJobs.remove(id);
+            close();
+
+        }
+
+        @Override
+        public void printJobNoMoreEvents(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
+            JobUpdate u = new JobUpdate(id, "Completed", ERROR_NONE, false, true);
+
+            logger.info("PrintJob Completed (No more event): " + id.toString());
+            updatePrintJob(u);
+            try {
+                SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
+            } catch (Exception e) {
+                logger.error("Unable to play sound: " + e.getMessage());
+                e.printStackTrace();
+            }
+            printJobs.remove(id);
+            close();
+        }
+
+        @Override
+        public void printJobRequiresAttention(PrintJobEvent arg0) {
+            synchronized (eventAlreadyFired) {
+                if (eventAlreadyFired) return;
+                eventAlreadyFired = true;
+            }
+            JobUpdate u = new JobUpdate(id, "Error: " + arg0.toString(), ERROR_PRINT_JOB_ATTENTION, true, false);
+            updatePrintJob(u);
+            logger.info("PrintJob [" + id + "] error " + arg0.toString());
+//            printJobs.remove(id);
+            close();
+        }
+    }
+
 }
 

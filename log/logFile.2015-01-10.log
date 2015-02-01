@@ -1,0 +1,156 @@
+2015-01-10 14:15:23,808 ERROR [main] Client: java.io.FileNotFoundException: PrintOSconfig.ini (No such file or directory)
+2015-01-10 14:15:39,373 INFO  [main] Client: --Found EPSON_TM-T20
+2015-01-10 14:15:39,492 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: http://v2.printos.io/rest/destination/login
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.addListener(DefaultChannelFuture.java:145)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1056)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:880)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:521)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:238)
+	at printos.client.Client.loginToServer(Client.java:122)
+	at printos.client.Client.<init>(Client.java:276)
+	at printos.client.Client.main(Client.java:68)
+Caused by: java.net.ConnectException: http://v2.printos.io/rest/destination/login
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 9 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at sun.nio.ch.Net.checkAddress(Net.java:127)
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:644)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.connect(NioClientSocketPipelineSink.java:108)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:70)
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:54)
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleDownstream(HttpClientCodec.java:97)
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleDownstream(ChunkedWriteHandler.java:109)
+	at org.jboss.netty.channel.Channels.connect(Channels.java:634)
+	at org.jboss.netty.channel.AbstractChannel.connect(AbstractChannel.java:207)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:229)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:182)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1017)
+	... 6 more
+
+2015-01-10 14:15:39,498 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.addListener(DefaultChannelFuture.java:145)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1056)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:880)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:521)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:238)
+	at printos.client.Client.getJobs(Client.java:190)
+	at printos.client.Client.getJobs(Client.java:207)
+	at printos.client.Client.start(Client.java:530)
+	at printos.client.Client.main(Client.java:69)
+Caused by: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 10 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at sun.nio.ch.Net.checkAddress(Net.java:127)
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:644)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.connect(NioClientSocketPipelineSink.java:108)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:70)
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:54)
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleDownstream(HttpClientCodec.java:97)
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleDownstream(ChunkedWriteHandler.java:109)
+	at org.jboss.netty.channel.Channels.connect(Channels.java:634)
+	at org.jboss.netty.channel.AbstractChannel.connect(AbstractChannel.java:207)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:229)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:182)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1017)
+	... 7 more
+
+2015-01-10 14:15:44,515 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.addListener(DefaultChannelFuture.java:145)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1056)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:880)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:521)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:238)
+	at printos.client.Client.getJobs(Client.java:190)
+	at printos.client.Client.getJobs(Client.java:207)
+	at printos.client.Client.start(Client.java:530)
+	at printos.client.Client.main(Client.java:69)
+Caused by: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 10 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at sun.nio.ch.Net.checkAddress(Net.java:127)
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:644)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.connect(NioClientSocketPipelineSink.java:108)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:70)
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:54)
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleDownstream(HttpClientCodec.java:97)
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleDownstream(ChunkedWriteHandler.java:109)
+	at org.jboss.netty.channel.Channels.connect(Channels.java:634)
+	at org.jboss.netty.channel.AbstractChannel.connect(AbstractChannel.java:207)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:229)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:182)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1017)
+	... 7 more
+
+2015-01-10 14:15:49,525 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.addListener(DefaultChannelFuture.java:145)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1056)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:880)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:521)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:238)
+	at printos.client.Client.getJobs(Client.java:190)
+	at printos.client.Client.getJobs(Client.java:207)
+	at printos.client.Client.start(Client.java:530)
+	at printos.client.Client.main(Client.java:69)
+Caused by: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 10 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at sun.nio.ch.Net.checkAddress(Net.java:127)
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:644)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.connect(NioClientSocketPipelineSink.java:108)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:70)
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:54)
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleDownstream(HttpClientCodec.java:97)
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleDownstream(ChunkedWriteHandler.java:109)
+	at org.jboss.netty.channel.Channels.connect(Channels.java:634)
+	at org.jboss.netty.channel.AbstractChannel.connect(AbstractChannel.java:207)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:229)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:182)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1017)
+	... 7 more
+
+2015-01-10 14:15:54,531 ERROR [main] Client: java.util.concurrent.ExecutionException: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyResponseFuture.abort(NettyResponseFuture.java:328)
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:106)
+	at org.jboss.netty.channel.DefaultChannelFuture.notifyListener(DefaultChannelFuture.java:427)
+	at org.jboss.netty.channel.DefaultChannelFuture.addListener(DefaultChannelFuture.java:145)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1056)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:880)
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:521)
+	at com.ning.http.client.AsyncHttpClient$BoundRequestBuilder.execute(AsyncHttpClient.java:238)
+	at printos.client.Client.getJobs(Client.java:190)
+	at printos.client.Client.getJobs(Client.java:207)
+	at printos.client.Client.start(Client.java:530)
+	at printos.client.Client.main(Client.java:69)
+Caused by: java.net.ConnectException: http://v2.printos.io/rest/lookup
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:102)
+	... 10 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at sun.nio.ch.Net.checkAddress(Net.java:127)
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:644)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.connect(NioClientSocketPipelineSink.java:108)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:70)
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:54)
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleDownstream(HttpClientCodec.java:97)
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleDownstream(ChunkedWriteHandler.java:109)
+	at org.jboss.netty.channel.Channels.connect(Channels.java:634)
+	at org.jboss.netty.channel.AbstractChannel.connect(AbstractChannel.java:207)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:229)
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:182)
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:1017)
+	... 7 more
+

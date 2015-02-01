@@ -1,0 +1,9 @@
+2015-01-19 17:46:55,962 ERROR [main] Client: Some of the configured printers (Tally_Dascom_2610) doesn't exist.
+2015-01-19 17:46:55,967 ERROR [main] Client: --Tally_Dascom_2610
+2015-01-19 17:46:56,226 INFO  [main] Client: cookieMonster:[]
+2015-01-19 17:46:56,227 INFO  [main] Client: Updateing cookieMonster to:[Cookie: domain=null, name=PLAY2AUTH_SESS_ID, value=9e3202389c0c5eaa988a1f5145f1a9d57eb44795h)6~t2m_1~9umo5'haxfcjeg26rrtua_zpx(tc2es'v.!gai)6uzc1f1tvqu(o8l, path=/, maxAge=-1, secure=false]
+2015-01-19 17:46:56,227 INFO  [main] Client: Login successful. 
+2015-01-19 17:46:56,278 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1421707615309}
+2015-01-19 17:47:01,377 INFO  [main] Client: Parsing response:{"jobs":[],"timestamp":1421707620408}
+2015-01-19 17:47:02,462 INFO  [Thread-0] Client: Shutting down...
+2015-01-19 17:47:02,463 INFO  [Thread-0] Client: Shutdown complete.
