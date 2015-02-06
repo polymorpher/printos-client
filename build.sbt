@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   "com.ning" % "async-http-client" % "1.7.21",
   "joda-time" % "joda-time" % "2.4",
   "com.fatboyindustrial.gson-jodatime-serialisers" % "gson-jodatime-serialisers" % "1.1.0",
-  "com.typesafe.akka" %% "akka-actor" % "2.3.8"
+  "com.typesafe.akka" %% "akka-actor" % "2.3.8",
+  "org.usb4java" % "usb4java" % "1.2.0"
 )
 
 assemblyJarName in assembly := "printos.jar"
