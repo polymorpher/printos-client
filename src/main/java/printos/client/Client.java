@@ -28,6 +28,7 @@ import com.ning.http.client.*;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import printos.client.PrinterUtil;
 
 public class Client {
     static final Logger logger = LoggerFactory.getLogger(Client.class);
@@ -39,6 +40,8 @@ public class Client {
     static int ERROR_OTHERS = 1337;
     static int MAXIMUM_WAIT_MILLIS_BEFORE_SHUTDOWN = 30000;
     static AtomicInteger numListeners = new AtomicInteger(0);
+    static List<PrintProcessor> registeredProcessors = new ArrayList<>();
+
     String bleepSoundPath;
     Map<UUID, String> printJobs = new ConcurrentHashMap<UUID, String>();
     Map<String, String> config = new HashMap<String, String>();
@@ -48,7 +51,7 @@ public class Client {
     String PRINTER_NAME = "";
     String CUT_EPSON = "" + (char) 29 + 'V' + (char) 0;
     String CUT_LEGACY = "" + (char) 27 + 'm';
-    String cutCommand = "";
+    String cutCommand = CUT_EPSON;
     int defaultLineWidth = 560;
     List<Cookie> cookieMonster = new ArrayList<Cookie>();
     DateTime cookieMonsterLastUpdate = DateTime.now();
@@ -56,6 +59,7 @@ public class Client {
     Long lastLookupTime = null;
     AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
     ArrayList<PrintService> serviceList;
+    ArrayList<PrintProcessor> usbPrintProcessors;
 
     public Client() {
         try {
@@ -87,12 +91,40 @@ public class Client {
         }
     }
 
+    boolean hasSystemPrinter() {
+        return serviceList.size() > 0;
+    }
+
+    static <T> java.util.List<T> convert(scala.collection.Seq<T> seq) {
+        return scala.collection.JavaConversions.seqAsJavaList(seq);
+    }
+
     public static void main(String[] args) {
         if (args.length >= 1) {
             configFile = args[0];
         }
         addShutdownHook();
+        PrinterUtil.init();
         Client c = new Client();
+        if (!c.hasSystemPrinter()) {
+            logger.info("No available system printer. Initialising USB module");
+            try {
+                List<PrinterUSBInfo> infos = convert(PrinterUtil.findPrinters());
+                if (infos.size() == 0) {
+                    logger.info("USB Module cannot find any USB Printer. Exiting.");
+                    System.exit(1);
+                }
+                c.usbPrintProcessors = new ArrayList<>();
+                for (PrinterUSBInfo info : infos) {
+                    PrintProcessor pp = new PrintProcessor(info);
+                    c.usbPrintProcessors.add(pp);
+                    registeredProcessors.add(pp);
+                    pp.run();
+                }
+            } catch (Exception e) {
+                logger.error(getStackTrace(e));
+            }
+        }
         c.start();
     }
 
@@ -145,6 +177,13 @@ public class Client {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 logger.info("Shutting down...");
+                try {
+                    for (PrintProcessor pp : registeredProcessors) {
+                        pp.shut();
+                    }
+                } catch (Exception e) {
+                    logger.error("Error during cleaning up bound USB printers: " + e.getMessage());
+                }
                 Long now = System.currentTimeMillis();
                 try {
                     while (numListeners.get() > 0) {
@@ -211,39 +250,6 @@ public class Client {
             logger.info("Update successful.");
         }
     }
-
-//    //member function!
-//    private void updateAndLogin(JobUpdate u, int numAttemptsRemaining) {
-//        if (numAttemptsRemaining == 0) {
-//            logger.error("Update-login exceeds maximum number of attempts");
-//            return;
-//        }
-//        if (cookieMonster != null) {
-//            int rcode = -1;
-//            try {
-//                rcode = updatePrintJob(u, cookieMonster);
-//            } catch (Exception e) {
-//                logger.error(getStackTrace(e));
-//            }
-//            if (rcode != 200) {
-//                updateAndLogin(u, numAttemptsRemaining - 1);
-//            } else {
-//                logger.debug("Update succeeded " + u.toString());
-//                return;
-//            }
-//        } else {
-//            try {
-//                cookieMonster = loginToServer(loginInfo);
-//            } catch (Exception e) {
-//                logger.error(getStackTrace(e));
-//            }
-//            updateAndLogin(u, numAttemptsRemaining - 1);
-//        }
-//    }
-//
-//    private void updateAndLogin(JobUpdate u) {
-//        updateAndLogin(u, 5);
-//    }
 
     private void updatePrintJob(JobUpdate u) {
         try {
@@ -345,12 +351,15 @@ public class Client {
                 }
             }
         }
+        System.out.println("Printers in service:");
+        System.out.println(serviceList);
         if (!missingPrinters.isEmpty()) {
             logger.error("Some of the configured printers (" + name + ") doesn't exist.");
             for (int ind = 0; ind < missingPrinters.size(); ind++) {
                 String printerName = requiredPrinters.get(ind);
                 logger.error("--" + printerName);
             }
+            parser = new ESCPOSTagParser();
             return;
         } else {
             PRINTER_NAME = name;
@@ -369,16 +378,31 @@ public class Client {
         }
     }
 
+    void doPrintSystem(String s, UUID id) throws Exception {
+        DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        DocPrintJob printJob = serviceList.get(0).createPrintJob();
+        printJob.addPrintJobListener(new Listener(id));
+        numListeners.incrementAndGet();
+        Doc document = new SimpleDoc(new ByteArrayInputStream(s.getBytes(Charset.forName("ASCII"))), flavor, null);
+        printJob.print(document, null);
+    }
+
+    void doPrintUSB(String data, UUID id) throws Exception {
+        for (PrintProcessor pp : this.usbPrintProcessors) {
+            pp.addJob(data.getBytes(), new USBListener(id));
+            numListeners.incrementAndGet();
+        }
+    }
+
     void doPrint(String data, UUID id) {
         logger.info("Printing id=" + id.toString());
         try {
             String s = processPrintData(data);
-            DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
-            DocPrintJob printJob = serviceList.get(0).createPrintJob();
-            printJob.addPrintJobListener(new Listener(id));
-            numListeners.incrementAndGet();
-            Doc document = new SimpleDoc(new ByteArrayInputStream(s.getBytes(Charset.forName("ASCII"))), flavor, null);
-            printJob.print(document, null);
+            if (this.hasSystemPrinter()) {
+                doPrintSystem(s, id);
+            } else {
+                doPrintUSB(s, id);
+            }
             logger.info("Printed: " + data);
         } catch (Exception e) {
             if (e instanceof TagParsingException) {
@@ -389,6 +413,8 @@ public class Client {
             }
             logger.error("Print failure (id=" + id.toString() + ") due to the following exception:" + e.toString());
         }
+
+
     }
 
     public void start() {
@@ -423,17 +449,6 @@ public class Client {
         UUID id;
         String data;
     }
-
-//    public void printStackRemove(UUID id) {
-//        printStackLock.lock();
-//        try {
-//            if (printStack.contains(id)) {
-//                printStack.remove(id);
-//            }
-//        } finally {
-//            printStackLock.unlock();
-//        }
-//    }
 
     static class PrintJobQueue {
         PrintJob[] jobs;
@@ -472,6 +487,35 @@ public class Client {
             userUsername = user;
             destinationUsername = dest;
             password = pass;
+        }
+    }
+
+    class USBListener implements USBListenerInterface {
+        UUID id;
+
+        public USBListener(UUID id) {
+            this.id = id;
+        }
+
+        public void complete() {
+            JobUpdate u = new JobUpdate(id, "SentToPrinter", ERROR_NONE, false, true);
+            logger.info("PrintJob sent to printer: " + id.toString());
+            updatePrintJob(u);
+            try {
+                SoundPlayer.playSound(this.getClass().getResource(bleepSoundPath));
+            } catch (Exception e) {
+                logger.error("Unable to play sound: " + e.getMessage());
+                e.printStackTrace();
+            }
+            printJobs.remove(id);
+            numListeners.decrementAndGet();
+        }
+
+        public void error(String reason) {
+            JobUpdate u = new JobUpdate(id, "[Failed] " + reason, ERROR_PRINTER, true, false);
+            updatePrintJob(u);
+            numListeners.decrementAndGet();
+            logger.error("PrintJob [" + id + "] failed " + reason);
         }
     }
 
