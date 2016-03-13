@@ -114,6 +114,7 @@ public class Client {
                     logger.info("USB Module cannot find any USB Printer. Exiting.");
                     System.exit(1);
                 }
+                System.out.println("Found printers" + infos.toString());
                 c.usbPrintProcessors = new ArrayList<>();
                 for (PrinterUSBInfo info : infos) {
                     PrintProcessor pp = new PrintProcessor(info);

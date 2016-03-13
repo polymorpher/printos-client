@@ -72,6 +72,7 @@ class PrintProcessor(info: PrinterUSBInfo) {
 object PrinterUtil {
   private val supportedDevices = new mutable.HashSet[String]()
   private val supportedManufacturersAndDevicePatterns = new mutable.HashMap[String, Seq[String]]()
+  private val supportedDevicesPatterns = new ArrayBuffer[String]()
   private val context: Context = new Context
   private val USBTimeout = 5000
 
@@ -96,8 +97,9 @@ object PrinterUtil {
     } else if (supportedManufacturersAndDevicePatterns.contains(nm)) {
       val patterns = supportedManufacturersAndDevicePatterns.get(nm).get
       return patterns.find(p => np.matches(p)).map(p => h)
+    } else{
+      return supportedDevicesPatterns.find(p=> fqn.matches(p)).map(p=> h)
     }
-    return None
   }
 
   private def getPrinterUSBInfo(device: Device, handle: DeviceHandle): Seq[PrinterUSBInfo] = {
@@ -191,6 +193,7 @@ object PrinterUtil {
     supportedManufacturersAndDevicePatterns += "epson" -> Seq("tm.*")
     supportedManufacturersAndDevicePatterns += "dascom" -> Seq(".*")
     supportedManufacturersAndDevicePatterns += "icod" -> Seq(".*")
+    supportedDevicesPatterns += ".*"
     // Initialize the libusb context
     var result: Int = LibUsb.init(context)
     if (result < 0) {
